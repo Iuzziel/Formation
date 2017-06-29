@@ -1,2 +1,3 @@
 # repository
-# Dossier de stockage pour mes travaux de formation
+Storing my work, i just started learn programming.
+Come back later for better code!
