@@ -11,11 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.border.EtchedBorder;
+import javax.swing.SwingConstants;
 
 
 public class FenetrePrincipale extends JFrame 
@@ -28,16 +31,21 @@ public class FenetrePrincipale extends JFrame
 	//données de la fenetre
 	private JPanel tabIsoler = new JPanel();
 	private JPanel tabTour = new JPanel();
-	private JTextField txtIsolerChrono = new JTextField();
-	private JTextField textTourChrono = new JTextField();
 	private JButton btnIsolerDemarrer = new JButton("D\u00E9marrer");
 	private JButton btnTourDemarrer = new JButton("D\u00E9marrer");
+	private JButton btnRedemarrer = new JButton("Redemarrer");
+	private JButton btnReinitialiser = new JButton("Reinitialiser");
+	private JButton btnArreter = new JButton("Arreter");
+	private JButton btnIsoler = new JButton("Isoler");
+	private JButton btnTour = new JButton("Tour");
 	private JList<String> lstIsoler = new JList<String>();
 	private JList<String> lstTour = new JList<String>();
 	private JScrollPane srlIsolerList = new JScrollPane(lstIsoler);
 	private JScrollPane srlTourList = new JScrollPane(lstTour);
 	private Timer timeIsoler = new Timer(10, new AppActionListener());
 	private Timer timeTour = new Timer(10, new AppActionListener());
+	private JLabel txtIsolerChrono = new JLabel("New label");
+	private JLabel txtTourChrono = new JLabel("New label");
 
 
 	//Création de la fenetre, et appel de initControles()
@@ -55,10 +63,6 @@ public class FenetrePrincipale extends JFrame
 	////////////////////////////////////Initialisation de la fenêtre////////////////////////////////////
 	private void initControles()
 	{
-		textTourChrono.setColumns(10);
-		textTourChrono.setEditable(false);
-		txtIsolerChrono.setEditable(false);
-		txtIsolerChrono.setColumns(10);
 		//Initialisation et construction de la fenetre principale
 		JPanel zoneClient = (JPanel) this.getContentPane();
 		zoneClient.setLayout(new GridLayout(1, 1));
@@ -68,6 +72,10 @@ public class FenetrePrincipale extends JFrame
 		//Onglet Isoler
 		tabIsoler.setBorder(new EmptyBorder(5, 5, 5, 5));
 		tabIsoler.setLayout(new BorderLayout(5, 5));
+		txtIsolerChrono.setOpaque(true);
+		txtIsolerChrono.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtIsolerChrono.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		txtIsolerChrono.setBackground(Color.WHITE);
 		tabIsoler.add(txtIsolerChrono, BorderLayout.NORTH);
 		tabIsoler.add(btnIsolerDemarrer, BorderLayout.SOUTH);
 		tabIsoler.add(srlIsolerList, BorderLayout.CENTER);
@@ -75,7 +83,11 @@ public class FenetrePrincipale extends JFrame
 		//Onglet Tour
 		tabTour.setBorder(new EmptyBorder(5, 5, 5, 5));
 		tabTour.setLayout(new BorderLayout(5, 5));
-		tabTour.add(textTourChrono, BorderLayout.NORTH);
+		txtTourChrono.setOpaque(true);
+		txtTourChrono.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtTourChrono.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		txtTourChrono.setBackground(Color.WHITE);
+		tabTour.add(txtTourChrono, BorderLayout.NORTH);
 		tabTour.add(btnTourDemarrer, BorderLayout.SOUTH);
 		tabTour.add(srlTourList, BorderLayout.CENTER);
 
@@ -106,6 +118,16 @@ public class FenetrePrincipale extends JFrame
 				timeTour.start();
 				System.out.println("btnTourDemarrer");
 			}
+			if(e.getSource() == timeIsoler){
+				//TODO Listener timeIsoler
+
+			}
+			if(e.getSource() == timeTour){
+				//TODO Listener timeTour
+
+			}
+			if(e.getSource() == btnArreter && tabIsoler.hasFocus()) timeIsoler.stop();
+			if(e.getSource() == btnArreter && tabTour.hasFocus()) timeTour.stop();
 		}
 
 
