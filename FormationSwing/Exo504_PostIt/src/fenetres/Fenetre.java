@@ -1,9 +1,12 @@
 package fenetres;
 
+import java.awt.RenderingHints.Key;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.BoxLayout;
@@ -14,6 +17,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.text.Keymap;
 
 public class Fenetre extends JFrame 
 {
@@ -81,6 +85,7 @@ public class Fenetre extends JFrame
 		btnSupprimer.addActionListener(new AppActionListener());
 		btnPurger.addActionListener(new AppActionListener());
 		txtSaisie.addFocusListener(new AppFocusListener());
+		txtSaisie.addKeyListener(new AppKeyListener());
 	}
 
 	////////////////////////////////////Méthodes////////////////////////////////////
@@ -127,10 +132,33 @@ public class Fenetre extends JFrame
 	}
 	class AppFocusListener implements FocusListener {
 		public void focusGained(FocusEvent e) {
-			if(e.getSource() == txtSaisie) txtSaisie.setText(null);
+			if(e.getSource() == txtSaisie){
+				ajouterUneEntree();
+			}
 		}
 		public void focusLost(FocusEvent e) {
 			//Void
 		}
+	}
+	class AppKeyListener implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// Touche entrée pour ajouter
+			if(e.getKeyCode() == KeyEvent.VK_ENTER && txtSaisie.hasFocus()) ajouterUneEntree();
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// Auto-generated method stub
+			
+		}
+		
 	}
 }
