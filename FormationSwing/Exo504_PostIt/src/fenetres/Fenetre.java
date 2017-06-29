@@ -106,14 +106,15 @@ public class Fenetre extends JFrame
 		actualiserListe();
 	}
 	private void purgerDixDerniers() {
-		if(tabListe.size() > 10)
-			for (int i = 0; i < 10; i++) {
+		if(tabListe.size() > 10){
+			int maxTab = tabListe.size();
+			for (int i = 0; i < (maxTab-10); i++) {
 				tabListe.remove(0);
 			}
-		actualiserListe();
+			actualiserListe();
+		}
+
 	}
-
-
 	//*********************************Listener*********************************//
 	class AppActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
