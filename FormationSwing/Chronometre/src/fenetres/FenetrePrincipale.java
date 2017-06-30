@@ -11,13 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.text.DecimalFormat;
-import java.text.FieldPosition;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.ParsePosition;
-import java.util.Locale;
-
+import java.util.Vector;
 import javax.swing.Timer;
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -46,8 +40,10 @@ public class FenetrePrincipale extends JFrame
 	private JButton btnReinitialiser = new JButton("Reinitialiser");
 	private JButton btnIsoler = new JButton("Isoler");
 	private JButton btnTour = new JButton("Tour");
-	private JList<String> lstIsoler = new JList<String>();
-	private JList<String> lstTour = new JList<String>();
+	private Vector<String> vecLstTour = new Vector<String>();
+	private Vector<String> vecLstIsoler = new Vector<String>();
+	private JList<String> lstIsoler = new JList<String>(vecLstIsoler);
+	private JList<String> lstTour = new JList<String>(vecLstTour);
 	private JScrollPane srlIsolerList = new JScrollPane(lstIsoler);
 	private JScrollPane srlTourList = new JScrollPane(lstTour);
 	private Timer timeIsoler = new Timer(10, new AppActionListener());
@@ -56,6 +52,8 @@ public class FenetrePrincipale extends JFrame
 	private JLabel txtTourChrono = new JLabel("00:00:00");
 	private int tempIsolerChrono = 0;
 	private int tempTourChrono = 0;
+	private int nbIsoler = 0;
+	private int nbTour = 0;
 
 	//Création de la fenetre, et appel de initControles()
 	public FenetrePrincipale()
@@ -123,6 +121,25 @@ public class FenetrePrincipale extends JFrame
 		btnIsoler.addKeyListener(new AppKeyListener());
 		btnIsolerArreter.addActionListener(new AppActionListener());
 	}
+	private void ongletIsolerRepartir(){
+		tabIsoler.remove(btnIsoler);
+		tabIsoler.remove(btnIsolerArreter);
+		tabIsoler.setBorder(new EmptyBorder(5, 5, 5, 5));
+		tabIsoler.setLayout(new BorderLayout(5, 5));
+		txtIsolerChrono.setOpaque(true);
+		txtIsolerChrono.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtIsolerChrono.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		txtIsolerChrono.setBackground(Color.WHITE);
+		tabIsoler.add(txtIsolerChrono, BorderLayout.NORTH);
+		JPanel ongletIsolerLanceSud = new JPanel(new GridLayout(1, 2));
+		tabIsoler.add(ongletIsolerLanceSud, BorderLayout.SOUTH);
+		ongletIsolerLanceSud.add(btnReinitialiser);
+		ongletIsolerLanceSud.add(btnRedemarrer);
+		tabIsoler.add(srlIsolerList, BorderLayout.CENTER);
+		btnReinitialiser.addActionListener(new AppActionListener());
+		btnRedemarrer.addKeyListener(new AppKeyListener());
+		btnRedemarrer.addActionListener(new AppActionListener());
+	}
 
 	//Onglet Tour
 	private void ongletTourDemarrer(){
@@ -173,8 +190,15 @@ public class FenetrePrincipale extends JFrame
 				txtIsolerChrono.setText(String.valueOf(tempIsolerChrono));
 
 			}
-			//TODO if(e.getSource() == btnIsoler) lstIsoler.add(String.valueOf(tempIsolerChrono));
-			if(e.getSource() == btnIsolerArreter) timeIsoler.stop();
+			if(e.getSource() == btnIsoler) {
+				nbIsoler++;
+				vecLstIsoler.add(nbIsoler + " - " + String.valueOf(tempIsolerChrono));
+				lstIsoler.setListData(vecLstIsoler);
+			}
+			if(e.getSource() == btnIsolerArreter) {
+				timeIsoler.stop();
+				ongletIsolerRepartir();
+			}
 
 			//*********************************Onglet Tour*********************************//
 			if(e.getSource() == btnTourDemarrer) {
@@ -187,6 +211,12 @@ public class FenetrePrincipale extends JFrame
 				tempTourChrono++;
 				txtTourChrono.setText(String.valueOf(tempTourChrono));
 
+			}
+			if(e.getSource() == btnTour) {
+				//TODO reinitialiser le chrono à chaque Tour
+				nbTour++;
+				vecLstTour.add(nbTour + " - " + String.valueOf(tempTourChrono));
+				lstTour.setListData(vecLstTour);
 			}
 			if(e.getSource() == btnTourArreter) timeTour.stop();
 
