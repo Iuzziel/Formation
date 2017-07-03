@@ -265,5 +265,35 @@ public class FenetrePrincipale extends JFrame
 				ongletIsolerDemarrer();
 			}
 		}
+
+
+	}
+	class AppKeyListener implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Touche VK_SPACE pour le tour
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnIsoler.isFocusable()) {
+				btnIsoler.doClick();
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabIsoler");
+			}
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabTour) {
+				btnTour.doClick();
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabTour");
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// Auto-generated method stub
+
+		}
+
 	}
 }
