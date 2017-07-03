@@ -156,7 +156,5 @@ public class InformationLivre extends JPanel{
 		JButton btnQuitterLaRecherche = new JButton("Quitter la Recherche");
 		panInfoSud.add(btnQuitterLaRecherche);
 
-
-
 	}
 }
