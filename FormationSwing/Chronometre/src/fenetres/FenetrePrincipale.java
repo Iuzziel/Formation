@@ -61,6 +61,7 @@ public class FenetrePrincipale extends JFrame
 	private int tempsTourStart = 0;
 	private int nbIsoler = 0;
 	private int nbTour = 0;
+	private long cumulTour = 0;
 	private DecimalFormat df = new DecimalFormat("00");
 
 	//Création de la fenetre, et appel de initControles()
@@ -240,6 +241,7 @@ public class FenetrePrincipale extends JFrame
 				int nMin = (int) (((tempTourChrono / 100) / 60) % 60);
 				int nSec = (int) ((tempTourChrono / 100) % 60);
 				int nCen = (int) (tempTourChrono % 100);
+				cumulTour += tempTourChrono;
 				txtTourChrono.setText(df.format(nHeu) + ":" + df.format(nMin) + ":" + df.format(nSec) + ":" + df.format(nCen));
 
 			}
@@ -255,6 +257,11 @@ public class FenetrePrincipale extends JFrame
 			}
 			if(e.getSource() == btnTourArreter) {
 				timeTour.stop();
+				int nHeu = (int) ((cumulTour / 100) / 3600);
+				int nMin = (int) (((cumulTour / 100) / 60) % 60);
+				int nSec = (int) ((cumulTour / 100) % 60);
+				int nCen = (int) (cumulTour % 100);
+				txtTourChrono.setText("Temps cumulé des " + vecLstTour.size() + " tours : " + df.format(nHeu) + ":" + df.format(nMin) + ":" + df.format(nSec) + ":" + df.format(nCen));
 				ongletTourRepartir();
 			}
 			if(e.getSource() == btnTourRedemarrer) {
@@ -274,7 +281,6 @@ public class FenetrePrincipale extends JFrame
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			// TODO Touche VK_SPACE pour le tour
 			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnIsoler.hasFocus()) {
 				btnIsoler.doClick();
 				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE");
