@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import javax.swing.JScrollPane;
 
 public class RechercherUnLivre extends JPanel{
 	
@@ -27,7 +28,7 @@ public class RechercherUnLivre extends JPanel{
 	//Constructeur
 	public RechercherUnLivre() {
 		setBorder(new TitledBorder(null, "Rechercher un ouvrage", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(new GridLayout(0, 1, 5, 5));
 		
 		JPanel panRechercheResultats = new JPanel();
 		add(panRechercheResultats);
@@ -77,16 +78,20 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheResultats.add(panResultats);
 		panResultats.setLayout(new BorderLayout(5, 5));
 		
-		//TODO Remplir la JTable
-		tabRenvoiResultatsLivre = new JTable();
-		tabRenvoiResultatsLivre.setPreferredSize(new Dimension(60, 100));
-		panResultats.add(tabRenvoiResultatsLivre, BorderLayout.CENTER);
-		
 		JButton btnResultatsPlusInfos = new JButton("+ d'infos");
 		panResultats.add(btnResultatsPlusInfos, BorderLayout.SOUTH);
 		
 		JLabel lblRenvoiResultatsTitre = new JLabel("Livre(s) correspondant(s) :");
 		panResultats.add(lblRenvoiResultatsTitre, BorderLayout.NORTH);
+		
+		
+		//TODO Remplir la JTable avec 2 vectors
+		tabRenvoiResultatsLivre = new JTable();
+		tabRenvoiResultatsLivre.setPreferredSize(new Dimension(50, 60));
+		panResultats.add(tabRenvoiResultatsLivre, BorderLayout.CENTER);
+		
+		JScrollPane srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
+		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.WEST);
 
 	}
 }
