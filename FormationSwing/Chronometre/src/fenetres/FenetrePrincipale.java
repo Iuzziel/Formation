@@ -130,6 +130,7 @@ public class FenetrePrincipale extends JFrame
 		ongletIsolerLanceSud.remove(btnIsolerDemarrer);
 		ongletIsolerLanceSud.add(btnIsoler);
 		ongletIsolerLanceSud.add(btnIsolerArreter);
+		btnIsoler.requestFocus();
 		tabIsoler.validate();
 		tabIsoler.repaint();
 	}
@@ -155,6 +156,7 @@ public class FenetrePrincipale extends JFrame
 		ongletTourLanceSud.remove(btnTourDemarrer);
 		ongletTourLanceSud.add(btnTour);
 		ongletTourLanceSud.add(btnTourArreter);
+		btnTour.requestFocus();
 		tabTour.validate();
 		tabTour.repaint();
 	}
@@ -265,5 +267,35 @@ public class FenetrePrincipale extends JFrame
 				ongletIsolerDemarrer();
 			}
 		}
+
+
+	}
+	class AppKeyListener implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Touche VK_SPACE pour le tour
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnIsoler.hasFocus()) {
+				btnIsoler.doClick();
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE");
+			}
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnTour.hasFocus()) {
+				btnTour.doClick();
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE");
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// Auto-generated method stub
+
+		}
+
 	}
 }
