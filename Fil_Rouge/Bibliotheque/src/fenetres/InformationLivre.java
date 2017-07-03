@@ -10,7 +10,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
 
 public class InformationLivre extends JPanel{
 
@@ -36,104 +35,96 @@ public class InformationLivre extends JPanel{
 		/////////////////////Regroupement des Infos + TextField/////////////////////
 		JPanel panInfoNord = new JPanel();
 		add(panInfoNord, BorderLayout.NORTH);
-		panInfoNord.setLayout(new GridLayout(4, 2, 0, 0));
+		panInfoNord.setLayout(new GridLayout(0, 2, 5, 5));
 
-		JPanel panInfoNordTitre = new JPanel();
-		FlowLayout fl_panInfoNordTitre = (FlowLayout) panInfoNordTitre.getLayout();
-		fl_panInfoNordTitre.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordTitre);
-
-		JPanel panInfoNordNbExemplaireDispo = new JPanel();
-		FlowLayout fl_panInfoNordNbExemplaireDispo = (FlowLayout) panInfoNordNbExemplaireDispo.getLayout();
-		fl_panInfoNordNbExemplaireDispo.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordNbExemplaireDispo);
-
-		JPanel panInfoNordAuteur = new JPanel();
-		FlowLayout fl_panInfoNordAuteur = (FlowLayout) panInfoNordAuteur.getLayout();
-		fl_panInfoNordAuteur.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordAuteur);
-
-		JPanel panInfoNordNbExemplaireDispoBiblio = new JPanel();
-		FlowLayout fl_panInfoNordNbExemplaireDispoBiblio = (FlowLayout) panInfoNordNbExemplaireDispoBiblio.getLayout();
-		fl_panInfoNordNbExemplaireDispoBiblio.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordNbExemplaireDispoBiblio);
-
-		JPanel panInfoNordTheme = new JPanel();
-		FlowLayout fl_panInfoNordTheme = (FlowLayout) panInfoNordTheme.getLayout();
-		fl_panInfoNordTheme.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordTheme);
-
-		JPanel panInfoNordEmplacement = new JPanel();
-		FlowLayout fl_panInfoNordEmplacement = (FlowLayout) panInfoNordEmplacement.getLayout();
-		fl_panInfoNordEmplacement.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordEmplacement);
-
-		JPanel panInfoNordISBN = new JPanel();
-		FlowLayout fl_panInfoNordISBN = (FlowLayout) panInfoNordISBN.getLayout();
-		fl_panInfoNordISBN.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordISBN);
-
-		JPanel panInfoNordISSN = new JPanel();
-		FlowLayout fl_panInfoNordISSN = (FlowLayout) panInfoNordISSN.getLayout();
-		fl_panInfoNordISSN.setAlignment(FlowLayout.LEFT);
-		panInfoNord.add(panInfoNordISSN);
 
 		/////////////////////Création des Infos & TextField/////////////////////
 		//Titre
+		JPanel panInfoNordTitre = new JPanel();
+		panInfoNord.add(panInfoNordTitre);
+		panInfoNordTitre.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblTitre = new JLabel("Titre :");
 		panInfoNordTitre.add(lblTitre);
 		textFieldTitre = new JTextField();
 		panInfoNordTitre.add(textFieldTitre);
 		textFieldTitre.setColumns(10);
 
-		//Auteur
-		JLabel lblAuteur = new JLabel("Auteur :");
-		panInfoNordAuteur.add(lblAuteur);
-		textFieldAuteur = new JTextField();
-		panInfoNordAuteur.add(textFieldAuteur);
-		textFieldAuteur.setColumns(10);
-
-		//Theme
-		JLabel lblTheme = new JLabel("Th\u00E8me :");
-		panInfoNordTheme.add(lblTheme);
-		textFieldTheme = new JTextField();
-		panInfoNordTheme.add(textFieldTheme);
-		textFieldTheme.setColumns(10);
-
-		//Emplacement
-		JLabel lblEmplacement = new JLabel("Emplacement :");
-		panInfoNordEmplacement.add(lblEmplacement);
-		textFieldEmplacement = new JTextField();
-		panInfoNordEmplacement.add(textFieldEmplacement);
-		textFieldEmplacement.setColumns(10);
-
-		//ISBN
-		JLabel lblIsbn = new JLabel("ISBN :");
-		panInfoNordISBN.add(lblIsbn);
-		textFieldISBN = new JTextField();
-		panInfoNordISBN.add(textFieldISBN);
-		textFieldISBN.setColumns(10);
-
-		//ISSN
-		JLabel lblIssn = new JLabel("ISSN :");
-		panInfoNordISSN.add(lblIssn);
-		textFieldISSN = new JTextField();
-		panInfoNordISSN.add(textFieldISSN);
-		textFieldISSN.setColumns(10);
 
 		//Nombre d'exemplaire dispo
+		JPanel panInfoNordNbExemplaireDispo = new JPanel();
+		panInfoNord.add(panInfoNordNbExemplaireDispo);
+		panInfoNordNbExemplaireDispo.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblNbExemplaireDispo = new JLabel("Nombre d'exemplaire disponible :");
 		panInfoNordNbExemplaireDispo.add(lblNbExemplaireDispo);
 		textFieldNbExemplaireDispo = new JTextField();
 		panInfoNordNbExemplaireDispo.add(textFieldNbExemplaireDispo);
 		textFieldNbExemplaireDispo.setColumns(5);
 
+
+		//Auteur
+		JPanel panInfoNordAuteur = new JPanel();
+		panInfoNord.add(panInfoNordAuteur);
+		panInfoNordAuteur.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblAuteur = new JLabel("Auteur :");
+		panInfoNordAuteur.add(lblAuteur);
+		textFieldAuteur = new JTextField();
+		panInfoNordAuteur.add(textFieldAuteur);
+		textFieldAuteur.setColumns(10);
+
+
 		//Nombre d'exemplaire dispo dans CETTE bibliothèque
-		JLabel lblNbExemplaireDispoBiblio = new JLabel("Nombre d'exemplaire disponible dans cette biblioth\u00E8que :");
+		JPanel panInfoNordNbExemplaireDispoBiblio = new JPanel();
+		panInfoNord.add(panInfoNordNbExemplaireDispoBiblio);
+		panInfoNordNbExemplaireDispoBiblio.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblNbExemplaireDispoBiblio = new JLabel("Nb d'exemplaire dispo dans cette biblioth\u00E8que :");
 		panInfoNordNbExemplaireDispoBiblio.add(lblNbExemplaireDispoBiblio);
 		textFieldNbExemplaireDispoBiblio = new JTextField();
 		panInfoNordNbExemplaireDispoBiblio.add(textFieldNbExemplaireDispoBiblio);
 		textFieldNbExemplaireDispoBiblio.setColumns(5);
+
+
+		//Theme
+		JPanel panInfoNordTheme = new JPanel();
+		panInfoNord.add(panInfoNordTheme);
+		panInfoNordTheme.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblTheme = new JLabel("Th\u00E8me :");
+		panInfoNordTheme.add(lblTheme);
+		textFieldTheme = new JTextField();
+		panInfoNordTheme.add(textFieldTheme);
+		textFieldTheme.setColumns(10);
+
+
+		//Emplacement
+		JPanel panInfoNordEmplacement = new JPanel();
+		panInfoNord.add(panInfoNordEmplacement);
+		panInfoNordEmplacement.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblEmplacement = new JLabel("Emplacement :");
+		panInfoNordEmplacement.add(lblEmplacement);
+		textFieldEmplacement = new JTextField();
+		panInfoNordEmplacement.add(textFieldEmplacement);
+		textFieldEmplacement.setColumns(10);
+
+
+		//ISBN
+		JPanel panInfoNordISBN = new JPanel();
+		panInfoNord.add(panInfoNordISBN);
+		panInfoNordISBN.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblIsbn = new JLabel("ISBN :");
+		panInfoNordISBN.add(lblIsbn);
+		textFieldISBN = new JTextField();
+		panInfoNordISBN.add(textFieldISBN);
+		textFieldISBN.setColumns(10);
+
+
+		//ISSN
+		JPanel panInfoNordISSN = new JPanel();
+		panInfoNord.add(panInfoNordISSN);
+		panInfoNordISSN.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblIssn = new JLabel("ISSN :");
+		panInfoNordISSN.add(lblIssn);
+		textFieldISSN = new JTextField();
+		panInfoNordISSN.add(textFieldISSN);
+		textFieldISSN.setColumns(10);
 
 		/////////////////////Zone Centre, commentaire/////////////////////
 		JPanel panInfoCentre = new JPanel();
