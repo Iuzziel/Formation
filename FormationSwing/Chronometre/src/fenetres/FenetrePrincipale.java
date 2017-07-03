@@ -117,9 +117,6 @@ public class FenetrePrincipale extends JFrame
 	}
 
 	///////////////////////////////////////////////////////////////////Méthodes//////////////////////////////////////////////////////////////////////
-	//TODO Créer les méthodes pour initialiser les chronos, et les stopper/reinitialiser
-	//TODO Créer les versions de fenetres apres avoir démarrer
-
 	//Onglet Isoler
 	private void ongletIsolerDemarrer(){
 		ongletIsolerLanceSud.remove(btnIsolerReinitialiser);
@@ -191,7 +188,6 @@ public class FenetrePrincipale extends JFrame
 	class AppActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//TODO Finir les listeners
 			//*********************************Onglet Isoler*********************************//
 			if(e.getSource() == btnIsolerDemarrer) {
 				timeIsoler.start();
@@ -199,7 +195,6 @@ public class FenetrePrincipale extends JFrame
 				ongletIsolerLance();
 			}
 			if(e.getSource() == timeIsoler){
-				//TODO Listener timeIsoler, à changer par les méthodes
 				tempIsolerChrono = (int) System.currentTimeMillis() / 10 - tempsIsolerStart;
 				int nHeu = (int) ((tempIsolerChrono / 100) / 3600);
 				int nMin = (int) (((tempIsolerChrono / 100) / 60) % 60);
@@ -238,7 +233,6 @@ public class FenetrePrincipale extends JFrame
 				ongletTourLance();
 			}
 			if(e.getSource() == timeTour){
-				//TODO Listener timeTour, à changer par les méthodes
 				tempTourChrono = (int) System.currentTimeMillis() / 10 - tempsTourStart;
 				int nHeu = (int) ((tempTourChrono / 100) / 3600);
 				int nMin = (int) (((tempTourChrono / 100) / 60) % 60);
@@ -248,7 +242,6 @@ public class FenetrePrincipale extends JFrame
 
 			}
 			if(e.getSource() == btnTour) {
-				//TODO reinitialiser le chrono à chaque Tour
 				nbTour++;
 				tempsTourStart = (int) System.currentTimeMillis() / 10;
 				int nHeu = (int) ((tempTourChrono / 100) / 3600);
