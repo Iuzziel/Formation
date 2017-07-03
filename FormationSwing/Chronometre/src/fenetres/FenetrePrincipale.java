@@ -130,6 +130,7 @@ public class FenetrePrincipale extends JFrame
 		ongletIsolerLanceSud.remove(btnIsolerDemarrer);
 		ongletIsolerLanceSud.add(btnIsoler);
 		ongletIsolerLanceSud.add(btnIsolerArreter);
+		btnIsoler.requestFocus();
 		tabIsoler.validate();
 		tabIsoler.repaint();
 	}
@@ -155,6 +156,7 @@ public class FenetrePrincipale extends JFrame
 		ongletTourLanceSud.remove(btnTourDemarrer);
 		ongletTourLanceSud.add(btnTour);
 		ongletTourLanceSud.add(btnTourArreter);
+		btnTour.requestFocus();
 		tabTour.validate();
 		tabTour.repaint();
 	}
@@ -273,13 +275,13 @@ public class FenetrePrincipale extends JFrame
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Touche VK_SPACE pour le tour
-			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnIsoler.isFocusable()) {
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnIsoler.hasFocus()) {
 				btnIsoler.doClick();
-				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabIsoler");
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE");
 			}
-			if(e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabTour) {
+			if(e.getKeyCode() == KeyEvent.VK_SPACE && btnTour.hasFocus()) {
 				btnTour.doClick();
-				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE && e.getSource() == tabTour");
+				System.out.println("e.getKeyCode() == KeyEvent.VK_SPACE");
 			}
 		}
 
