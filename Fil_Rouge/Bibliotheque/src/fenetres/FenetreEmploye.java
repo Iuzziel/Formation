@@ -1,11 +1,11 @@
 package fenetres;
 
+import panneaux.*;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
 import java.awt.GridLayout;
 
 public class FenetreEmploye extends JFrame {
@@ -43,7 +43,6 @@ public class FenetreEmploye extends JFrame {
 
 		//Création des onglets/tabGestStock
 		JPanel tabGestStock = new JPanel();
-		tabGestStock.setLayout(new GridLayout(2, 2, 5, 5));
 		tabEspaceEmploye.addTab("Gestion du stock", null, tabGestStock, null);
 
 		//Création des onglets/tabAdmin
@@ -61,5 +60,16 @@ public class FenetreEmploye extends JFrame {
 		//Tab gestion du fond
 		tabGestFond.add(new RechercherUnLivre());
 		tabGestFond.add(new InformationLivre());
+
+		//Tab gestion du stock
+		tabGestStock.setLayout(new BorderLayout(5, 5));
+		tabGestStock.add(new GestionStock(), BorderLayout.WEST);
+		tabGestStock.add(new GestionStockResultAffich(), BorderLayout.CENTER);
+
+		//Tab Admin
+		tabAdmin.setLayout(new BorderLayout(5, 5));
+		tabAdmin.add(new GestionEmployes(), BorderLayout.WEST);
+		tabAdmin.add(new GestionEmployesResultAffich(), BorderLayout.CENTER);
+
 	}
 }
