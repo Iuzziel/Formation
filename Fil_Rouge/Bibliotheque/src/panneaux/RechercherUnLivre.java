@@ -1,4 +1,4 @@
-package fenetres;
+package panneaux;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
