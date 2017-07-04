@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.GridLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 
 public class FenetreConnexion extends JFrame{
 
@@ -25,13 +26,14 @@ public class FenetreConnexion extends JFrame{
 	private JPasswordField pwdFieldConnexion;
 
 	public FenetreConnexion(){
-		setPreferredSize(new Dimension(250, 400));
-		setMinimumSize(new Dimension(250, 200));
+		setPreferredSize(new Dimension(275, 400));
+		setMinimumSize(new Dimension(275, 200));
 		setMaximumSize(new Dimension(400, 400));
-		getContentPane().setLayout(new BorderLayout(0, 0));
+		getContentPane().setLayout(new BorderLayout(5, 5));
 
 		//Titre
 		JLabel lblConnexionAuxComptes = new JLabel("Connexion aux comptes Employ\u00E9s :");
+		lblConnexionAuxComptes.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblConnexionAuxComptes.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblConnexionAuxComptes, BorderLayout.NORTH);
 
