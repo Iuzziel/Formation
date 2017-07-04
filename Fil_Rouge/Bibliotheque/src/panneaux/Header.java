@@ -4,9 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
-
 import fenetres.FenetreConnexion;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
