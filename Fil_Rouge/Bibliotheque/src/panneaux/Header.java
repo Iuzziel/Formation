@@ -1,75 +1,93 @@
-package fenetres;
+package panneaux;
 
-import panneaux.*;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.border.TitledBorder;
 
-public class FenetreEmploye extends JFrame {
+import fenetres.FenetreConnexion;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+
+public class Header extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6154275497867212254L;
+	private static final long serialVersionUID = 6494265312863046861L;
 
-	public FenetreEmploye() {
-		this.setTitle("Bienvenu dans le logiciel de la bibliothèque");
-		this.setMinimumSize(new Dimension(800, 600));
-		this.setSize(800, 600);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
-		this.setResizable(true);
-		this.getContentPane().setLayout(new BorderLayout(5, 5));
-		this.getContentPane().add(new Header("Espace employé de la bibliothèque"), BorderLayout.NORTH);
+	//Données membre
+	private JLabel lblHeaderSeConnecter = new JLabel("Se connecter");
 
-		//Création du tabbedPane
-		JTabbedPane tabEspaceEmploye = new JTabbedPane(JTabbedPane.TOP);
-		tabEspaceEmploye.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		getContentPane().add(tabEspaceEmploye, BorderLayout.CENTER);
+	/**Création du module Header. Commun à toutes les fenêtres du logiciel. Reçoit le titre de la fenêtre en string en argument.
+	 *  
+	 *	@param titre
+	 */
+	public Header(String titre) {//TODO Rendre la création de la fenêtre conditionné par l'état de la session
+		setLayout(new BorderLayout(5, 5));
+		JPanel panHeaderTitre = new JPanel();
+		add(panHeaderTitre, BorderLayout.CENTER);
 
-		//Création des onglets
-		//Création des onglets/tabGestEmprunt
-		JPanel tabGestEmprunt = new JPanel();
-		tabGestEmprunt.setLayout(new GridLayout(2, 2, 5, 5));
-		tabEspaceEmploye.addTab("Gestion des emprunts", null, tabGestEmprunt, null);
+		//Titre
+		JLabel lblHeaderTitrePage = new JLabel(titre);
+		lblHeaderTitrePage.setFont(new Font("Tahoma", Font.BOLD, 16));
+		panHeaderTitre.add(lblHeaderTitrePage);
 
-		//Création des onglets/tabGestFond
-		JPanel tabGestFond = new JPanel();
-		tabGestFond.setLayout(new GridLayout(1, 2, 5, 5));
-		tabEspaceEmploye.addTab("Gestion du fond", null, tabGestFond, null);
+		//Panneau de connexion
+		JPanel panHeaderConnexion = new JPanel();
+		panHeaderConnexion.setBorder(new TitledBorder(null, "Fonction avanc\u00E9e", TitledBorder.LEADING, TitledBorder.TOP));
+		add(panHeaderConnexion, BorderLayout.EAST);
 
-		//Création des onglets/tabGestStock
-		JPanel tabGestStock = new JPanel();
-		tabEspaceEmploye.addTab("Gestion du stock", null, tabGestStock, null);
+		//
+		JLabel lblIconeConnexion = new JLabel("");
+		lblIconeConnexion.setIcon(new ImageIcon(Header.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
+		panHeaderConnexion.add(lblIconeConnexion);
 
-		//Création des onglets/tabAdmin
-		JPanel tabAdmin = new JPanel();
-		tabAdmin.setLayout(new GridLayout(2, 2, 5, 5));
-		tabEspaceEmploye.addTab("Gestion des comptes employ\u00E9s", null, tabAdmin, null);
+		lblHeaderSeConnecter.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblHeaderSeConnecter.setForeground(Color.BLUE);
+		lblHeaderSeConnecter.addMouseListener(new AppMouseListener());
+		panHeaderConnexion.add(lblHeaderSeConnecter);
+	}
 
-		///////////////////////////////////////////////TODO Remplissage des onglets///////////////////////////////////////////////
-		//Tab gestion des emprunts
-		tabGestEmprunt.add(new RechercherUnLivre());
-		tabGestEmprunt.add(new InformationLivre());
-		tabGestEmprunt.add(new RechercherUnAdherent());
-		tabGestEmprunt.add(new EmpruntRetour());
+	class AppMouseListener implements MouseListener {
+		//***********************************************Listerners*****************************************//
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// Auto-generated method stub
+			if(e.getSource() == lblHeaderSeConnecter) {
+				FenetreConnexion fenetreConnexion = new FenetreConnexion();
+				fenetreConnexion.setLocationRelativeTo(null);
+				fenetreConnexion.setVisible(true);
+				fenetreConnexion.setAlwaysOnTop(true);
+			}
+		}
 
-		//Tab gestion du fond
-		tabGestFond.add(new RechercherUnLivre());
-		tabGestFond.add(new InformationLivre());
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// Auto-generated method stub
 
-		//Tab gestion du stock
-		tabGestStock.setLayout(new BorderLayout(5, 5));
-		tabGestStock.add(new GestionStock(), BorderLayout.WEST);
-		tabGestStock.add(new GestionStockResultAffich(), BorderLayout.CENTER);
+		}
 
-		//Tab Admin
-		tabAdmin.setLayout(new BorderLayout(5, 5));
-		tabAdmin.add(new GestionEmployes(), BorderLayout.WEST);
-		tabAdmin.add(new GestionEmployesResultAffich(), BorderLayout.CENTER);
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// Auto-generated method stub
+
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// Auto-generated method stub
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// Auto-generated method stub
+
+		}
 
 	}
 }
