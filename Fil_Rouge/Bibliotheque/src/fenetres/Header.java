@@ -22,35 +22,35 @@ public class Header extends JPanel {
 
 	public Header(String titre) {//TODO Rendre la création de la fenêtre conditionné par l'état de la session
 		setLayout(new BorderLayout(5, 5));
-		JPanel panel = new JPanel();
-		add(panel, BorderLayout.CENTER);
+		JPanel panHeaderTitre = new JPanel();
+		add(panHeaderTitre, BorderLayout.CENTER);
 
 		//Titre
 		JLabel lblHeaderTitrePage = new JLabel(titre);
 		lblHeaderTitrePage.setFont(new Font("Tahoma", Font.BOLD, 16));
-		panel.add(lblHeaderTitrePage);
+		panHeaderTitre.add(lblHeaderTitrePage);
 
-		//Panneau de connextion
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Fonction avanc\u00E9e", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		add(panel_1, BorderLayout.EAST);
+		//Panneau de connexion
+		JPanel panHeaderConnexion = new JPanel();
+		panHeaderConnexion.setBorder(new TitledBorder(null, "Fonction avanc\u00E9e", TitledBorder.LEADING, TitledBorder.TOP));
+		add(panHeaderConnexion, BorderLayout.EAST);
 
-		//TODO Insérer l'icone de connextion & ajouter le mouselistener pour se connecter
+		//
 		JLabel lblIconeConnexion = new JLabel("");
 		lblIconeConnexion.setIcon(new ImageIcon(Header.class.getResource("/com/sun/java/swing/plaf/windows/icons/UpFolder.gif")));
-		panel_1.add(lblIconeConnexion);
+		panHeaderConnexion.add(lblIconeConnexion);
 
 		lblHeaderSeConnecter.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblHeaderSeConnecter.setForeground(Color.BLUE);
 		lblHeaderSeConnecter.addMouseListener(new AppMouseListener());
-		panel_1.add(lblHeaderSeConnecter);
+		panHeaderConnexion.add(lblHeaderSeConnecter);
 	}
 
 	class AppMouseListener implements MouseListener {
 		//***********************************************Listerners*****************************************//
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 			if(e.getSource() == lblHeaderSeConnecter) {
 				FenetreConnexion fenetreConnexion = new FenetreConnexion();
 				fenetreConnexion.setLocationRelativeTo(null);
@@ -61,25 +61,25 @@ public class Header extends JPanel {
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 
 		}
 
