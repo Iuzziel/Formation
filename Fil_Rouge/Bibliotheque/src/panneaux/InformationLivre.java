@@ -1,4 +1,4 @@
-package fenetres;
+package panneaux;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
