@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import javax.swing.border.EmptyBorder;
 
 public class InformationLivre extends JPanel{
 
@@ -34,9 +35,9 @@ public class InformationLivre extends JPanel{
 
 		/////////////////////Regroupement des Infos + TextField/////////////////////
 		JPanel panInfoNord = new JPanel();
+		panInfoNord.setBorder(new EmptyBorder(0, 2, 5, 2));
 		add(panInfoNord, BorderLayout.NORTH);
 		panInfoNord.setLayout(new GridLayout(0, 2, 5, 5));
-
 
 		/////////////////////Création des Infos & TextField/////////////////////
 		//Titre
@@ -49,7 +50,6 @@ public class InformationLivre extends JPanel{
 		panInfoNordTitre.add(textFieldTitre);
 		textFieldTitre.setColumns(10);
 
-
 		//Nombre d'exemplaire dispo
 		JPanel panInfoNordNbExemplaireDispo = new JPanel();
 		panInfoNord.add(panInfoNordNbExemplaireDispo);
@@ -59,7 +59,6 @@ public class InformationLivre extends JPanel{
 		textFieldNbExemplaireDispo = new JTextField();
 		panInfoNordNbExemplaireDispo.add(textFieldNbExemplaireDispo);
 		textFieldNbExemplaireDispo.setColumns(5);
-
 
 		//Auteur
 		JPanel panInfoNordAuteur = new JPanel();
@@ -71,7 +70,6 @@ public class InformationLivre extends JPanel{
 		panInfoNordAuteur.add(textFieldAuteur);
 		textFieldAuteur.setColumns(10);
 
-
 		//Nombre d'exemplaire dispo dans CETTE bibliothèque
 		JPanel panInfoNordNbExemplaireDispoBiblio = new JPanel();
 		panInfoNord.add(panInfoNordNbExemplaireDispoBiblio);
@@ -81,7 +79,6 @@ public class InformationLivre extends JPanel{
 		textFieldNbExemplaireDispoBiblio = new JTextField();
 		panInfoNordNbExemplaireDispoBiblio.add(textFieldNbExemplaireDispoBiblio);
 		textFieldNbExemplaireDispoBiblio.setColumns(5);
-
 
 		//Theme
 		JPanel panInfoNordTheme = new JPanel();
@@ -93,7 +90,6 @@ public class InformationLivre extends JPanel{
 		panInfoNordTheme.add(textFieldTheme);
 		textFieldTheme.setColumns(10);
 
-
 		//Emplacement
 		JPanel panInfoNordEmplacement = new JPanel();
 		panInfoNord.add(panInfoNordEmplacement);
@@ -104,7 +100,6 @@ public class InformationLivre extends JPanel{
 		panInfoNordEmplacement.add(textFieldEmplacement);
 		textFieldEmplacement.setColumns(10);
 
-
 		//ISBN
 		JPanel panInfoNordISBN = new JPanel();
 		panInfoNord.add(panInfoNordISBN);
@@ -114,7 +109,6 @@ public class InformationLivre extends JPanel{
 		textFieldISBN = new JTextField();
 		panInfoNordISBN.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
-
 
 		//ISSN
 		JPanel panInfoNordISSN = new JPanel();
