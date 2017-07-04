@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
+import javax.swing.border.EmptyBorder;
 
 public class RechercherUnLivre extends JPanel{
 
@@ -22,6 +23,7 @@ public class RechercherUnLivre extends JPanel{
 	private JTextField textFieldTitre;
 	private JTextField textFieldAuteur;
 	private JTextField textFieldTheme;
+	private JTextField textFieldExemplaire;
 	private JTable tabRenvoiResultatsLivre;
 
 	//Constructeur
@@ -38,8 +40,11 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheResultats.add(panRecherche);
 		panRecherche.setLayout(new BoxLayout(panRecherche, BoxLayout.Y_AXIS));
 
-		//panRechercheLabel
+		//panRecherche rangé par label associé
+		//Titre
 		JPanel panRechercheTitre = new JPanel();
+		panRechercheTitre.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheTitre.setMaximumSize(new Dimension(600, 35));
 		panRecherche.add(panRechercheTitre);
 		panRechercheTitre.setLayout(new BoxLayout(panRechercheTitre, BoxLayout.X_AXIS));
 		JLabel lblTitre = new JLabel("Titre : ");
@@ -48,7 +53,9 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheTitre.add(textFieldTitre);
 		textFieldTitre.setColumns(10);
 
+		//Auteur
 		JPanel panRechercheAuteur = new JPanel();
+		panRechercheAuteur.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panRechercheAuteur.setMaximumSize(new Dimension(600, 35));
 		panRecherche.add(panRechercheAuteur);
 		panRechercheAuteur.setLayout(new BoxLayout(panRechercheAuteur, BoxLayout.X_AXIS));
@@ -58,7 +65,10 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheAuteur.add(textFieldAuteur);
 		textFieldAuteur.setColumns(10);
 
+		//Theme
 		JPanel panRechercheTheme = new JPanel();
+		panRechercheTheme.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheTheme.setMaximumSize(new Dimension(600, 35));
 		panRecherche.add(panRechercheTheme);
 		panRechercheTheme.setLayout(new BoxLayout(panRechercheTheme, BoxLayout.X_AXIS));
 		JLabel lblTheme = new JLabel("Th\u00E8me : ");
@@ -67,7 +77,21 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheTheme.add(textFieldTheme);
 		textFieldTheme.setColumns(10);
 
+		//Numéro exemplaire
+		JPanel panRechercheExemplaire = new JPanel();
+		panRechercheExemplaire.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheExemplaire.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheExemplaire);
+		panRechercheExemplaire.setLayout(new BoxLayout(panRechercheExemplaire, BoxLayout.X_AXIS));
+		JLabel lblExemplaire = new JLabel("Code exemplaire : ");
+		panRechercheExemplaire.add(lblExemplaire);
+		textFieldExemplaire = new JTextField();
+		panRechercheExemplaire.add(textFieldExemplaire);
+		textFieldExemplaire.setColumns(10);
+
+		//Bouton Rechercher
 		JPanel panRechercheBoutton = new JPanel();
+		panRechercheBoutton.setBorder(new EmptyBorder(2, 0, 2, 0));
 		panRecherche.add(panRechercheBoutton);
 		panRechercheBoutton.setLayout(new BoxLayout(panRechercheBoutton, BoxLayout.X_AXIS));
 		JButton btnRechercherLivre = new JButton("Rechercher");
@@ -78,12 +102,8 @@ public class RechercherUnLivre extends JPanel{
 		panRechercheResultats.add(panResultats);
 		panResultats.setLayout(new BorderLayout(5, 5));
 
-		JButton btnResultatsPlusInfos = new JButton("+ d'infos");
-		panResultats.add(btnResultatsPlusInfos, BorderLayout.SOUTH);
-
 		JLabel lblRenvoiResultatsTitre = new JLabel("Livre(s) correspondant(s) :");
 		panResultats.add(lblRenvoiResultatsTitre, BorderLayout.NORTH);
-
 
 		//TODO Remplir la JTable avec 2 vectors
 		tabRenvoiResultatsLivre = new JTable();
@@ -91,7 +111,13 @@ public class RechercherUnLivre extends JPanel{
 		panResultats.add(tabRenvoiResultatsLivre, BorderLayout.CENTER);
 
 		JScrollPane srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
-		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.WEST);
+		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.CENTER);
+		
+		//Bouton +d'info et son panel
+		JPanel panResultatsBtnPlusInfos = new JPanel();
+		panResultats.add(panResultatsBtnPlusInfos, BorderLayout.SOUTH);
+		JButton btnResultatsPlusInfos = new JButton("+ d'infos");
+		panResultatsBtnPlusInfos.add(btnResultatsPlusInfos);
 
 	}
 }
