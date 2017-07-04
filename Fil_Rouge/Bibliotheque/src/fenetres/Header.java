@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 
 public class Header extends JPanel {
-
 	/**
 	 * 
 	 */
@@ -20,6 +19,10 @@ public class Header extends JPanel {
 	//Données membre
 	private JLabel lblHeaderSeConnecter = new JLabel("Se connecter");
 
+	/**Création du module Header. Commun à toutes les fenêtres du logiciel. Reçoit le titre de la fenêtre en string en argument.
+	 *  
+	 *	@param titre
+	 */
 	public Header(String titre) {//TODO Rendre la création de la fenêtre conditionné par l'état de la session
 		setLayout(new BorderLayout(5, 5));
 		JPanel panHeaderTitre = new JPanel();
