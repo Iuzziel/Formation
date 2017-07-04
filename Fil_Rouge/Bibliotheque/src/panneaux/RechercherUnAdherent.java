@@ -1,4 +1,4 @@
-package fenetres;
+package panneaux;
 
 import java.awt.GridLayout;
 import javax.swing.JPanel;
