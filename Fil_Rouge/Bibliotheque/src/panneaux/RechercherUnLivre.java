@@ -19,12 +19,14 @@ public class RechercherUnLivre extends JPanel{
 	 */
 	private static final long serialVersionUID = -3793794312904965025L;
 
-	//Données membre //TODO Penser à changer avec getter et setter dans le code final
+	//Données membre 
+	//TODO Penser à changer avec getter et setter dans le code final
 	private JTextField textFieldTitre;
 	private JTextField textFieldAuteur;
 	private JTextField textFieldTheme;
 	private JTextField textFieldExemplaire;
 	private JTable tabRenvoiResultatsLivre;
+	private JPanel panRechercheBoutton = new JPanel();
 
 	//Constructeur
 	public RechercherUnLivre() {
@@ -90,7 +92,6 @@ public class RechercherUnLivre extends JPanel{
 		textFieldExemplaire.setColumns(10);
 
 		//Bouton Rechercher
-		JPanel panRechercheBoutton = new JPanel();
 		panRechercheBoutton.setBorder(new EmptyBorder(2, 0, 2, 0));
 		panRecherche.add(panRechercheBoutton);
 		panRechercheBoutton.setLayout(new BoxLayout(panRechercheBoutton, BoxLayout.X_AXIS));
@@ -112,12 +113,68 @@ public class RechercherUnLivre extends JPanel{
 
 		JScrollPane srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
 		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.CENTER);
-		
+
 		//Bouton +d'info et son panel
 		JPanel panResultatsBtnPlusInfos = new JPanel();
 		panResultats.add(panResultatsBtnPlusInfos, BorderLayout.SOUTH);
 		JButton btnResultatsPlusInfos = new JButton("+ d'infos");
 		panResultatsBtnPlusInfos.add(btnResultatsPlusInfos);
 
+	}
+
+
+	//**********************************Accesseurs**********************************//
+	public JTextField getTextFieldTitre() {
+		return textFieldTitre;
+	}
+
+	public void setTextFieldTitre(JTextField textFieldTitre) {
+		this.textFieldTitre = textFieldTitre;
+	}
+
+	public JTextField getTextFieldAuteur() {
+		return textFieldAuteur;
+	}
+
+	public void setTextFieldAuteur(JTextField textFieldAuteur) {
+		this.textFieldAuteur = textFieldAuteur;
+	}
+
+	public JTextField getTextFieldTheme() {
+		return textFieldTheme;
+	}
+
+	public void setTextFieldTheme(JTextField textFieldTheme) {
+		this.textFieldTheme = textFieldTheme;
+	}
+
+	public JTextField getTextFieldExemplaire() {
+		return textFieldExemplaire;
+	}
+
+	public void setTextFieldExemplaire(JTextField textFieldExemplaire) {
+		this.textFieldExemplaire = textFieldExemplaire;
+	}
+
+	public JTable getTabRenvoiResultatsLivre() {
+		return tabRenvoiResultatsLivre;
+	}
+
+	public void setTabRenvoiResultatsLivre(JTable tabRenvoiResultatsLivre) {
+		this.tabRenvoiResultatsLivre = tabRenvoiResultatsLivre;
+	}
+
+	public JPanel getPanRechercheBoutton() {
+		return panRechercheBoutton;
+	}
+
+	public void setPanRechercheBoutton(JPanel panRechercheBoutton) {
+		this.panRechercheBoutton = panRechercheBoutton;
+	}
+
+	//**********************************Méthodes**********************************//
+	public void addBoutonCreerLivre() {
+		JButton ajouterLivre = new JButton("Ajouter un livre ");
+		panRechercheBoutton.add(ajouterLivre);
 	}
 }
