@@ -25,6 +25,8 @@ public class FenetreConnexion extends JFrame{
 	private JTextField textFieldConnexionIdentifiant;
 	private JPasswordField pwdFieldConnexion;
 
+	
+	//Constructeur de la fenetre
 	public FenetreConnexion(){
 		setPreferredSize(new Dimension(275, 400));
 		setMinimumSize(new Dimension(275, 200));
@@ -78,4 +80,26 @@ public class FenetreConnexion extends JFrame{
 
 	}
 
+
+	//Accesseurs
+	public JTextField getTextFieldConnexionIdentifiant() {
+		return textFieldConnexionIdentifiant;
+	}
+
+
+	public void setTextFieldConnexionIdentifiant(JTextField textFieldConnexionIdentifiant) {
+		this.textFieldConnexionIdentifiant = textFieldConnexionIdentifiant;
+	}
+
+
+	public JPasswordField getPwdFieldConnexion() {
+		return pwdFieldConnexion;
+	}
+
+
+	public void setPwdFieldConnexion(JPasswordField pwdFieldConnexion) {
+		this.pwdFieldConnexion = pwdFieldConnexion;
+	}
+	
+	
 }
