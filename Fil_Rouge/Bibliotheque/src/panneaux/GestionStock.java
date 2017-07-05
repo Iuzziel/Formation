@@ -21,6 +21,7 @@ public class GestionStock extends JPanel {
 	 */
 	private static final long serialVersionUID = -3278275461451702696L;
 
+	//Constructeur
 	public GestionStock() {
 		setMinimumSize(new Dimension(200, 400));
 		setPreferredSize(new Dimension(250, 500));
