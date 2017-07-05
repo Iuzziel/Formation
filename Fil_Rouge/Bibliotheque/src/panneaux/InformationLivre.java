@@ -28,9 +28,11 @@ public class InformationLivre extends JPanel{
 	private JTextField textFieldISSN;
 	private JTextField textFieldNbExemplaireDispo;
 	private JTextField textFieldNbExemplaireDispoBiblio;
+	private JTextArea txtAreaComment;
 
+	//Constructeur
 	public InformationLivre() {
-		setBorder(new TitledBorder(null, "Information sur le livre", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		setBorder(new TitledBorder(null, "Information sur le livre", TitledBorder.LEADING, TitledBorder.TOP));
 		setLayout(new BorderLayout(0, 0));
 
 		/////////////////////Regroupement des Infos + TextField/////////////////////
@@ -122,17 +124,17 @@ public class InformationLivre extends JPanel{
 
 		/////////////////////Zone Centre, commentaire/////////////////////
 		JPanel panInfoCentre = new JPanel();
+		panInfoCentre.setBorder(new TitledBorder(null, "Commentaire :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		add(panInfoCentre, BorderLayout.CENTER);
 		panInfoCentre.setLayout(new BoxLayout(panInfoCentre, BoxLayout.X_AXIS));
 
-		JTextArea txtrCommentaire = new JTextArea();
-		txtrCommentaire.setPreferredSize(new Dimension(150, 150));
-		txtrCommentaire.setMinimumSize(new Dimension(150, 150));
-		txtrCommentaire.setEditable(false);
-		txtrCommentaire.setLineWrap(true);
-		txtrCommentaire.setWrapStyleWord(true);
-		txtrCommentaire.setText("Commentaire : ");
-		panInfoCentre.add(txtrCommentaire);
+		txtAreaComment = new JTextArea();
+		txtAreaComment.setPreferredSize(new Dimension(150, 150));
+		txtAreaComment.setMinimumSize(new Dimension(150, 150));
+		txtAreaComment.setEditable(false);
+		txtAreaComment.setLineWrap(true);
+		txtAreaComment.setWrapStyleWord(true);
+		panInfoCentre.add(txtAreaComment);
 
 		/////////////////////Zone Sud, bouton quitter/////////////////////
 		JPanel panInfoSud = new JPanel();
@@ -141,5 +143,84 @@ public class InformationLivre extends JPanel{
 		JButton btnQuitterLaRecherche = new JButton("Quitter la Recherche");
 		panInfoSud.add(btnQuitterLaRecherche);
 
+	}
+
+	//Méthodes
+	public void setCommentaireEditable(boolean bool) {
+		this.txtAreaComment.setEditable(bool);
+		return;
+	}
+
+	//Accesseurs
+	public JTextField getTextFieldTitre() {
+		return textFieldTitre;
+	}
+
+	public void setTextFieldTitre(JTextField textFieldTitre) {
+		this.textFieldTitre = textFieldTitre;
+	}
+
+	public JTextField getTextFieldAuteur() {
+		return textFieldAuteur;
+	}
+
+	public void setTextFieldAuteur(JTextField textFieldAuteur) {
+		this.textFieldAuteur = textFieldAuteur;
+	}
+
+	public JTextField getTextFieldTheme() {
+		return textFieldTheme;
+	}
+
+	public void setTextFieldTheme(JTextField textFieldTheme) {
+		this.textFieldTheme = textFieldTheme;
+	}
+
+	public JTextField getTextFieldEmplacement() {
+		return textFieldEmplacement;
+	}
+
+	public void setTextFieldEmplacement(JTextField textFieldEmplacement) {
+		this.textFieldEmplacement = textFieldEmplacement;
+	}
+
+	public JTextField getTextFieldISBN() {
+		return textFieldISBN;
+	}
+
+	public void setTextFieldISBN(JTextField textFieldISBN) {
+		this.textFieldISBN = textFieldISBN;
+	}
+
+	public JTextField getTextFieldISSN() {
+		return textFieldISSN;
+	}
+
+	public void setTextFieldISSN(JTextField textFieldISSN) {
+		this.textFieldISSN = textFieldISSN;
+	}
+
+	public JTextField getTextFieldNbExemplaireDispo() {
+		return textFieldNbExemplaireDispo;
+	}
+
+	public void setTextFieldNbExemplaireDispo(JTextField textFieldNbExemplaireDispo) {
+		this.textFieldNbExemplaireDispo = textFieldNbExemplaireDispo;
+	}
+
+	public JTextField getTextFieldNbExemplaireDispoBiblio() {
+		return textFieldNbExemplaireDispoBiblio;
+	}
+
+	public void setTextFieldNbExemplaireDispoBiblio(JTextField textFieldNbExemplaireDispoBiblio) {
+		this.textFieldNbExemplaireDispoBiblio = textFieldNbExemplaireDispoBiblio;
+	}
+
+	public JTextArea getTxtrCommentaire() {
+		return txtAreaComment;
+	}
+
+	public void setTxtrCommentaire(JTextArea txtrCommentaire) {
+		this.txtAreaComment = txtrCommentaire;
 	}
 }
