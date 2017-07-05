@@ -11,7 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JToolBar.Separator;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextField;
-/*********************sgsdrfhwdtjhsrwtjwr*********************************/
+
 public class GestionEmployes extends JPanel {
 	/**
 	 * 
@@ -32,11 +32,12 @@ public class GestionEmployes extends JPanel {
 		panGestionEmployes.setLayout(new BoxLayout(panGestionEmployes, BoxLayout.Y_AXIS));
 		add(panGestionEmployes);
 
-		//Créations des données du paneau
+		//Créations du panneau des conditions
+		//Créations des données du panneau/titre
 		JLabel lblTitre = new JLabel("Conditions pour apparaître sur la liste : ");
 		panGestionEmployes.add(lblTitre);
 
-		//Bouton Radio groupé Tous/Filtrer
+		//Créations du panneau des conditions/Bouton Radio groupé Tous&Filtrer
 		JRadioButton rdoTous = new JRadioButton("Tous");
 		panGestionEmployes.add(rdoTous);
 		JRadioButton rdoFiltrer = new JRadioButton("Filtrer");
@@ -45,7 +46,7 @@ public class GestionEmployes extends JPanel {
 		grpTousFiltrer.add(rdoTous);
 		grpTousFiltrer.add(rdoFiltrer);
 
-		//Ajout des 4 checkbox du filtre
+		//Créations du panneau des conditions/Checkbox des 4 filtres
 		JCheckBox chkBiblio = new JCheckBox("Bibliothécaire");
 		panGestionEmployes.add(chkBiblio);		
 		JCheckBox chkRespons = new JCheckBox("Responsable");
@@ -56,47 +57,74 @@ public class GestionEmployes extends JPanel {
 		panGestionEmployes.add(chkAdmin);
 
 		panGestionEmployes.add(new Separator());
-		
+
+		//Créations du panneau des conditions/Paneau des champs de recherche
+		//Principale
 		JPanel panRecherche = new JPanel();
 		panGestionEmployes.add(panRecherche);
 		panRecherche.setLayout(new BorderLayout(0, 0));
-		
+		//Principale/Panneaux DES champs
 		JPanel panRechercheChamps = new JPanel();
 		panRecherche.add(panRechercheChamps, BorderLayout.NORTH);
 		panRechercheChamps.setLayout(new BoxLayout(panRechercheChamps, BoxLayout.Y_AXIS));
-		
+
+		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ nom
 		JPanel panRechercheChampsNom = new JPanel();
 		panRechercheChamps.add(panRechercheChampsNom);
-		
+
 		JLabel lblNom = new JLabel("Nom : ");
 		panRechercheChampsNom.add(lblNom);
-		
+
 		txtFieldNom = new JTextField();
 		panRechercheChampsNom.add(txtFieldNom);
 		txtFieldNom.setColumns(10);
-		
+
+		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ prénom
 		JPanel panRechercheChampsPrenom = new JPanel();
 		panRechercheChamps.add(panRechercheChampsPrenom);
-		
+
 		JLabel lblPrenom = new JLabel("Pr\u00E9nom : ");
 		panRechercheChampsPrenom.add(lblPrenom);
-		
+
 		txtFieldPrenom = new JTextField();
 		panRechercheChampsPrenom.add(txtFieldPrenom);
 		txtFieldPrenom.setColumns(10);
-		
+
+		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ identifiant
 		JPanel panRechercheChampsId = new JPanel();
 		panRechercheChamps.add(panRechercheChampsId);
-		
+
 		JLabel lblIdentifiant = new JLabel("Identifiant : ");
 		panRechercheChampsId.add(lblIdentifiant);
-		
+
 		txtFieldId = new JTextField();
 		panRechercheChampsId.add(txtFieldId);
 		txtFieldId.setColumns(10);
-		
-		//Champs de recherche
-		
 
+	}
+
+	//Accesseurs
+	public JTextField getTxtFieldNom() {
+		return txtFieldNom;
+	}
+
+	public void setTxtFieldNom(JTextField txtFieldNom) {
+		this.txtFieldNom = txtFieldNom;
+	}
+
+	public JTextField getTxtFieldPrenom() {
+		return txtFieldPrenom;
+	}
+
+	public void setTxtFieldPrenom(JTextField txtFieldPrenom) {
+		this.txtFieldPrenom = txtFieldPrenom;
+	}
+
+	public JTextField getTxtFieldId() {
+		return txtFieldId;
+	}
+
+	public void setTxtFieldId(JTextField txtFieldId) {
+		this.txtFieldId = txtFieldId;
 	}
 }
