@@ -14,7 +14,6 @@ public class FenetreClient extends JFrame{
 	 */
 	private static final long serialVersionUID = -629171735000729382L;
 
-
 	//Constructeur de la fenetre
 	public FenetreClient() {
 		this.setMinimumSize(new Dimension(800, 600));
