@@ -1,130 +1,180 @@
 package panneaux;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JToolBar.Separator;
 import javax.swing.border.TitledBorder;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
+import javax.swing.border.EmptyBorder;
 
-public class GestionEmployes extends JPanel {
+public class RechercherUnLivre extends JPanel{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5357891521398913524L;
-	private JTextField txtFieldNom;
-	private JTextField txtFieldPrenom;
-	private JTextField txtFieldId;
+	private static final long serialVersionUID = -3793794312904965025L;
 
-	public GestionEmployes() {
-		setMinimumSize(new Dimension(200, 400));
-		setPreferredSize(new Dimension(250, 500));
-		setLayout(new BorderLayout(5, 5));
+	//Données membre 
+	//TODO Penser à changer avec getter et setter dans le code final
+	private JTextField textFieldTitre;
+	private JTextField textFieldAuteur;
+	private JTextField textFieldTheme;
+	private JTextField textFieldExemplaire;
+	private JTable tabRenvoiResultatsLivre;
+	private JPanel panRechercheBoutton = new JPanel();
 
-		//Création du panel principal
-		JPanel panGestionEmployes = new JPanel();
-		panGestionEmployes.setBorder(new TitledBorder(null, "Gestion du rôle des employés", TitledBorder.LEADING, TitledBorder.TOP));
-		panGestionEmployes.setLayout(new BoxLayout(panGestionEmployes, BoxLayout.Y_AXIS));
-		add(panGestionEmployes);
+	//Constructeur
+	public RechercherUnLivre() {
+		setBorder(new TitledBorder(null, "Rechercher un ouvrage", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		//Créations du panneau des conditions
-		//Créations des données du panneau/titre
-		JLabel lblTitre = new JLabel("Conditions pour apparaître sur la liste : ");
-		panGestionEmployes.add(lblTitre);
+		JPanel panRechercheResultats = new JPanel();
+		add(panRechercheResultats);
+		panRechercheResultats.setLayout(new BoxLayout(panRechercheResultats, BoxLayout.Y_AXIS));
 
-		//Créations du panneau des conditions/Bouton Radio groupé Tous&Filtrer
-		JRadioButton rdoTous = new JRadioButton("Tous");
-		panGestionEmployes.add(rdoTous);
-		JRadioButton rdoFiltrer = new JRadioButton("Filtrer");
-		panGestionEmployes.add(rdoFiltrer);
-		ButtonGroup grpTousFiltrer = new ButtonGroup();
-		grpTousFiltrer.add(rdoTous);
-		grpTousFiltrer.add(rdoFiltrer);
-
-		//Créations du panneau des conditions/Checkbox des 4 filtres
-		JCheckBox chkBiblio = new JCheckBox("Bibliothécaire");
-		panGestionEmployes.add(chkBiblio);		
-		JCheckBox chkRespons = new JCheckBox("Responsable");
-		panGestionEmployes.add(chkRespons);		
-		JCheckBox chkGestionnaire = new JCheckBox("Gestionnaire de fond");
-		panGestionEmployes.add(chkGestionnaire);		
-		JCheckBox chkAdmin = new JCheckBox("Administrateur");
-		panGestionEmployes.add(chkAdmin);
-
-		panGestionEmployes.add(new Separator());
-
-		//Créations du panneau des conditions/Paneau des champs de recherche
-		//Principale
+		//////////////////////////////////////Panel de la recherche de livre//////////////////////////////////////
 		JPanel panRecherche = new JPanel();
-		panGestionEmployes.add(panRecherche);
-		panRecherche.setLayout(new BorderLayout(0, 0));
-		//Principale/Panneaux DES champs
-		JPanel panRechercheChamps = new JPanel();
-		panRecherche.add(panRechercheChamps, BorderLayout.NORTH);
-		panRechercheChamps.setLayout(new BoxLayout(panRechercheChamps, BoxLayout.Y_AXIS));
+		panRechercheResultats.add(panRecherche);
+		panRecherche.setLayout(new BoxLayout(panRecherche, BoxLayout.Y_AXIS));
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ nom
-		JPanel panRechercheChampsNom = new JPanel();
-		panRechercheChamps.add(panRechercheChampsNom);
+		//panRecherche rangé par label associé
+		//Titre
+		JPanel panRechercheTitre = new JPanel();
+		panRechercheTitre.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheTitre.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheTitre);
+		panRechercheTitre.setLayout(new BoxLayout(panRechercheTitre, BoxLayout.X_AXIS));
+		JLabel lblTitre = new JLabel("Titre : ");
+		panRechercheTitre.add(lblTitre);
+		textFieldTitre = new JTextField();
+		panRechercheTitre.add(textFieldTitre);
+		textFieldTitre.setColumns(10);
 
-		JLabel lblNom = new JLabel("Nom : ");
-		panRechercheChampsNom.add(lblNom);
+		//Auteur
+		JPanel panRechercheAuteur = new JPanel();
+		panRechercheAuteur.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheAuteur.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheAuteur);
+		panRechercheAuteur.setLayout(new BoxLayout(panRechercheAuteur, BoxLayout.X_AXIS));
+		JLabel lblAuteur = new JLabel("Auteur : ");
+		panRechercheAuteur.add(lblAuteur);
+		textFieldAuteur = new JTextField();
+		panRechercheAuteur.add(textFieldAuteur);
+		textFieldAuteur.setColumns(10);
 
-		txtFieldNom = new JTextField();
-		panRechercheChampsNom.add(txtFieldNom);
-		txtFieldNom.setColumns(10);
+		//Theme
+		JPanel panRechercheTheme = new JPanel();
+		panRechercheTheme.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheTheme.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheTheme);
+		panRechercheTheme.setLayout(new BoxLayout(panRechercheTheme, BoxLayout.X_AXIS));
+		JLabel lblTheme = new JLabel("Th\u00E8me : ");
+		panRechercheTheme.add(lblTheme);
+		textFieldTheme = new JTextField();
+		panRechercheTheme.add(textFieldTheme);
+		textFieldTheme.setColumns(10);
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ prénom
-		JPanel panRechercheChampsPrenom = new JPanel();
-		panRechercheChamps.add(panRechercheChampsPrenom);
+		//Numéro exemplaire
+		JPanel panRechercheExemplaire = new JPanel();
+		panRechercheExemplaire.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheExemplaire.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheExemplaire);
+		panRechercheExemplaire.setLayout(new BoxLayout(panRechercheExemplaire, BoxLayout.X_AXIS));
+		JLabel lblExemplaire = new JLabel("Code exemplaire : ");
+		panRechercheExemplaire.add(lblExemplaire);
+		textFieldExemplaire = new JTextField();
+		panRechercheExemplaire.add(textFieldExemplaire);
+		textFieldExemplaire.setColumns(10);
 
-		JLabel lblPrenom = new JLabel("Pr\u00E9nom : ");
-		panRechercheChampsPrenom.add(lblPrenom);
+		//Bouton Rechercher
+		panRechercheBoutton.setBorder(new EmptyBorder(2, 0, 2, 0));
+		panRecherche.add(panRechercheBoutton);
+		panRechercheBoutton.setLayout(new BoxLayout(panRechercheBoutton, BoxLayout.X_AXIS));
+		JButton btnRechercherLivre = new JButton("Rechercher");
+		panRechercheBoutton.add(btnRechercherLivre);
 
-		txtFieldPrenom = new JTextField();
-		panRechercheChampsPrenom.add(txtFieldPrenom);
-		txtFieldPrenom.setColumns(10);
+		//////////////////////////////////////Panel des resultats//////////////////////////////////////
+		JPanel panResultats = new JPanel();
+		panRechercheResultats.add(panResultats);
+		panResultats.setLayout(new BorderLayout(5, 5));
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ identifiant
-		JPanel panRechercheChampsId = new JPanel();
-		panRechercheChamps.add(panRechercheChampsId);
+		JLabel lblRenvoiResultatsTitre = new JLabel("Livre(s) correspondant(s) :");
+		panResultats.add(lblRenvoiResultatsTitre, BorderLayout.NORTH);
 
-		JLabel lblIdentifiant = new JLabel("Identifiant : ");
-		panRechercheChampsId.add(lblIdentifiant);
+		//TODO Remplir la JTable avec 2 vectors
+		tabRenvoiResultatsLivre = new JTable();
+		tabRenvoiResultatsLivre.setPreferredSize(new Dimension(250, 150));
+		panResultats.add(tabRenvoiResultatsLivre, BorderLayout.CENTER);
 
-		txtFieldId = new JTextField();
-		panRechercheChampsId.add(txtFieldId);
-		txtFieldId.setColumns(10);
+		JScrollPane srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
+		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.CENTER);
+
+		//Bouton +d'info et son panel
+		JPanel panResultatsBtnPlusInfos = new JPanel();
+		panResultats.add(panResultatsBtnPlusInfos, BorderLayout.SOUTH);
+		JButton btnResultatsPlusInfos = new JButton("+ d'infos");
+		panResultatsBtnPlusInfos.add(btnResultatsPlusInfos);
 
 	}
 
-	//Accesseurs
-	public JTextField getTxtFieldNom() {
-		return txtFieldNom;
+
+	//**********************************Accesseurs**********************************//
+	public JTextField getTextFieldTitre() {
+		return textFieldTitre;
 	}
 
-	public void setTxtFieldNom(JTextField txtFieldNom) {
-		this.txtFieldNom = txtFieldNom;
+	public void setTextFieldTitre(JTextField textFieldTitre) {
+		this.textFieldTitre = textFieldTitre;
 	}
 
-	public JTextField getTxtFieldPrenom() {
-		return txtFieldPrenom;
+	public JTextField getTextFieldAuteur() {
+		return textFieldAuteur;
 	}
 
-	public void setTxtFieldPrenom(JTextField txtFieldPrenom) {
-		this.txtFieldPrenom = txtFieldPrenom;
+	public void setTextFieldAuteur(JTextField textFieldAuteur) {
+		this.textFieldAuteur = textFieldAuteur;
 	}
 
-	public JTextField getTxtFieldId() {
-		return txtFieldId;
+	public JTextField getTextFieldTheme() {
+		return textFieldTheme;
 	}
 
-	public void setTxtFieldId(JTextField txtFieldId) {
-		this.txtFieldId = txtFieldId;
+	public void setTextFieldTheme(JTextField textFieldTheme) {
+		this.textFieldTheme = textFieldTheme;
+	}
+
+	public JTextField getTextFieldExemplaire() {
+		return textFieldExemplaire;
+	}
+
+	public void setTextFieldExemplaire(JTextField textFieldExemplaire) {
+		this.textFieldExemplaire = textFieldExemplaire;
+	}
+
+	public JTable getTabRenvoiResultatsLivre() {
+		return tabRenvoiResultatsLivre;
+	}
+
+	public void setTabRenvoiResultatsLivre(JTable tabRenvoiResultatsLivre) {
+		this.tabRenvoiResultatsLivre = tabRenvoiResultatsLivre;
+	}
+
+	public JPanel getPanRechercheBoutton() {
+		return panRechercheBoutton;
+	}
+
+	public void setPanRechercheBoutton(JPanel panRechercheBoutton) {
+		this.panRechercheBoutton = panRechercheBoutton;
+	}
+
+	//**********************************Méthodes**********************************//
+	public void addBoutonCreerLivre() {
+		JButton ajouterLivre = new JButton("Ajouter un livre ");
+		panRechercheBoutton.add(ajouterLivre);
 	}
 }
