@@ -15,6 +15,7 @@ public class GestionStockResultAffich extends JPanel {
 	 */
 	private static final long serialVersionUID = 629014741202551996L;
 
+	//Constructeur
 	public GestionStockResultAffich() {
 		this.setLayout(new BorderLayout(5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -24,7 +25,7 @@ public class GestionStockResultAffich extends JPanel {
 		JList<String> lstGestionListeResultAffich = new JList<String>();
 		JScrollPane panGestionListeResultAffich = new JScrollPane(lstGestionListeResultAffich);
 		this.add(panGestionListeResultAffich, BorderLayout.CENTER);
-		
+
 		//Panel Statistiques
 		JPanel panGestListStats = new JPanel();
 		panGestListStats.setPreferredSize(new Dimension(250, 150));
