@@ -17,9 +17,10 @@ public class Header extends JPanel {
 	 */
 	private static final long serialVersionUID = 6494265312863046861L;
 
-	//Données membre
+	//***********************************************Données membre*****************************************//
 	private JLabel lblHeaderSeConnecter = new JLabel("Se connecter");
 
+	//***********************************************Constructeur*****************************************//
 	/**Création du module Header. Commun à toutes les fenêtres du logiciel. Reçoit le titre de la fenêtre en string en argument.
 	 *  
 	 *	@param titre
@@ -50,8 +51,17 @@ public class Header extends JPanel {
 		panHeaderConnexion.add(lblHeaderSeConnecter);
 	}
 
+	//***********************************************Accesseurs*****************************************//
+	public JLabel getLblHeaderSeConnecter() {
+		return lblHeaderSeConnecter;
+	}
+
+	public void setLblHeaderSeConnecter(JLabel lblHeaderSeConnecter) {
+		this.lblHeaderSeConnecter = lblHeaderSeConnecter;
+	}
+
+	//***********************************************Listerners*****************************************//
 	class AppMouseListener implements MouseListener {
-		//***********************************************Listerners*****************************************//
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// Auto-generated method stub
