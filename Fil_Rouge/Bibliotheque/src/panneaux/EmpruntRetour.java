@@ -8,13 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
-import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.border.BevelBorder;
 
 public class EmpruntRetour extends JPanel {
 	/**
@@ -23,9 +24,8 @@ public class EmpruntRetour extends JPanel {
 	private static final long serialVersionUID = -2734805873664823251L;
 
 	// Donnees membres
-	private Vector<String> vctLivreScan = new Vector<String>();
-	private JList<String> lstLivreScan = new JList<String>(vctLivreScan);
-	private JScrollPane srlLivreScanne = new JScrollPane(lstLivreScan);
+	private JTable jTabLivreScan;
+	private JScrollPane srlLivreScanne = new JScrollPane(jTabLivreScan);
 
 	// Constructeur
 	public EmpruntRetour() {
@@ -45,8 +45,19 @@ public class EmpruntRetour extends JPanel {
 		// tabEmpruntRetour/panEmprunt/*
 		JLabel lblEmpruntTitre = new JLabel("Emprunt");
 		panEmprunt.add(lblEmpruntTitre);
-		remplirListeLivreScan("blabla");
-		srlLivreScanne.setPreferredSize(new Dimension(70, 150));
+		jTabLivreScan = new JTable();
+		jTabLivreScan.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Titre 1", "Auteur 1", "Exemplaire 1", "Oui"},
+				{"Titre 2", "Auteur 2", "Exemplaire 1", "Non"},
+				{"Titre 3", "Auteur 3", "Exemplaire 1", "Oui"},
+			},
+			new String[] {
+				"Titre", "Auteur", "Exemplaire", "Disponible"
+			}
+		));
+		srlLivreScanne.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		srlLivreScanne.add(jTabLivreScan);
 		panEmprunt.add(srlLivreScanne);
 		JProgressBar pgsBarEmprunt = new JProgressBar();
 		panEmprunt.add(pgsBarEmprunt);
@@ -69,12 +80,7 @@ public class EmpruntRetour extends JPanel {
 
 	// Methodes
 	public void remplirListeLivreScan(String codeExemplaire) {
-		// TODO Lier la Liste
-		vctLivreScan.addElement(codeExemplaire);
-		lstLivreScan.setMinimumSize(new Dimension(70, 150));
-		lstLivreScan.setPreferredSize(new Dimension(70, 150));
-		lstLivreScan.setListData(vctLivreScan);
-		srlLivreScanne.add(lstLivreScan);
+		// TODO Transformer le codeExemplaire en une requete pour aller chercher le livre correspondant et ajouter ca au tableau
 		this.repaint();
 		return;
 	}

@@ -29,7 +29,7 @@ public class GestionEmployes extends JPanel {
 		// Creation du panel principal
 		JPanel panGestionEmployes = new JPanel();
 		panGestionEmployes.setBorder(
-				new TitledBorder(null, "Gestion du rôle des employes", TitledBorder.LEADING, TitledBorder.TOP));
+				new TitledBorder(null, "Gestion du role des employes", TitledBorder.LEADING, TitledBorder.TOP));
 		panGestionEmployes.setLayout(new BoxLayout(panGestionEmployes, BoxLayout.Y_AXIS));
 		add(panGestionEmployes);
 

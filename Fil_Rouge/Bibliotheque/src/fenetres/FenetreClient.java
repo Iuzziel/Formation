@@ -18,7 +18,7 @@ public class FenetreClient extends JFrame {
 	public FenetreClient() {
 		this.setMinimumSize(new Dimension(800, 600));
 		this.setSize(1024, 768);
-		this.setTitle("Bienvenu dans le logiciel de la bibliothèque");
+		this.setTitle("Bienvenu dans le logiciel de la bibliotheque");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);

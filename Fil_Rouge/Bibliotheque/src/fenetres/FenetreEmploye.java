@@ -17,14 +17,14 @@ public class FenetreEmploye extends JFrame {
 
 	// Constructeur de la fenetre
 	public FenetreEmploye() {
-		this.setTitle("Bienvenu dans le logiciel de la bibliothèque");
+		this.setTitle("Bienvenu dans le logiciel de la bibliotheque");
 		this.setMinimumSize(new Dimension(800, 600));
 		this.setSize(1024, 768);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
 		this.getContentPane().setLayout(new BorderLayout(5, 5));
-		this.getContentPane().add(new Header("Espace employe de la bibliothèque"), BorderLayout.NORTH);
+		this.getContentPane().add(new Header("Espace employe de la bibliotheque"), BorderLayout.NORTH);
 
 		// Creation du tabbedPane
 		JTabbedPane tabEspaceEmploye = new JTabbedPane(JTabbedPane.TOP);

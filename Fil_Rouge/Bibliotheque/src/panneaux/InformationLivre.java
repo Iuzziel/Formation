@@ -31,7 +31,7 @@ public class InformationLivre extends JPanel {
 	private JTextField textFieldNbExemplaireDispoBiblio;
 	private JTextField textFieldExemplaire;
 	private JTextArea txtAreaComment;
-	private JComboBox<String> cboEtat;
+	private JComboBox<String> cboEtat = new JComboBox<String>(new String[] {"Tres bon", "Bon", "Mauvais", "Perdu"});
 
 	// Constructeur
 	public InformationLivre() {
@@ -141,7 +141,6 @@ public class InformationLivre extends JPanel {
 		panInfoNordComboEtat.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblEtat = new JLabel("Etat de l'exemplaire :");
 		panInfoNordComboEtat.add(lblEtat);
-		this.cboEtat = new JComboBox<String>(new String[] { "Tres bon", "Bon", "Mauvais", "Perdu" });
 		panInfoNordComboEtat.add(cboEtat);
 
 		///////////////////// Zone Centre, commentaire/////////////////////

@@ -34,6 +34,7 @@ public class RechercherUnAdherent extends JPanel {
 	private JTextField txtFieldInfoCotiOk;
 	private JTable tabRenvoiResultatsAdherent;
 	private JTable tabAdherentLivreEmprunte;
+	private JTextField txtFieldPenaliteEnCours;
 
 	// Constructeur
 	public RechercherUnAdherent() {
@@ -188,6 +189,18 @@ public class RechercherUnAdherent extends JPanel {
 		txtFieldInfoCotiOk.setMaximumSize(new Dimension(2147483647, 20));
 		txtFieldInfoCotiOk.setColumns(10);
 		panInfoAdherentPersoCotiOk.add(txtFieldInfoCotiOk);
+
+		// panInfoAdherentPersoPenalite contenant Label et txtField
+		JPanel panInfoAdherentPersoPenalite = new JPanel();
+		panInfoAdherentPersoPenalite.setMaximumSize(new Dimension(32767, 20));
+		panInfoAdherentPerso.add(panInfoAdherentPersoPenalite);
+		panInfoAdherentPersoPenalite.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblPenaliteEnCours = new JLabel("Penalite en cours ? : ");
+		panInfoAdherentPersoPenalite.add(lblPenaliteEnCours);
+		txtFieldPenaliteEnCours = new JTextField();
+		txtFieldPenaliteEnCours.setMaximumSize(new Dimension(2147483647, 20));
+		txtFieldPenaliteEnCours.setColumns(10);
+		panInfoAdherentPersoPenalite.add(txtFieldPenaliteEnCours);
 
 		// panInfoAdherentPersoBtn contenant le bouton Editer
 		JPanel panInfoAdherentPersoBtn = new JPanel();
