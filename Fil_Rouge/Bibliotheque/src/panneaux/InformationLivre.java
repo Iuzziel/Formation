@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
@@ -28,7 +29,9 @@ public class InformationLivre extends JPanel{
 	private JTextField textFieldISSN;
 	private JTextField textFieldNbExemplaireDispo;
 	private JTextField textFieldNbExemplaireDispoBiblio;
+	private JTextField textFieldExemplaire;
 	private JTextArea txtAreaComment;
+	private JComboBox<String> cboEtat;
 
 	//Constructeur
 	public InformationLivre() {
@@ -122,6 +125,25 @@ public class InformationLivre extends JPanel{
 		panInfoNordISSN.add(textFieldISSN);
 		textFieldISSN.setColumns(10);
 
+		//Code exemplaire
+		JPanel panInfoNordExemplaire = new JPanel();
+		panInfoNord.add(panInfoNordExemplaire);
+		panInfoNordExemplaire.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblExemplaire = new JLabel("Exemplaire :");
+		panInfoNordExemplaire.add(lblExemplaire);
+		textFieldExemplaire = new JTextField();
+		panInfoNordExemplaire.add(textFieldExemplaire);
+		textFieldExemplaire.setColumns(10);
+
+		//Combo état du livre
+		JPanel panInfoNordComboEtat = new JPanel();
+		panInfoNord.add(panInfoNordComboEtat);
+		panInfoNordComboEtat.setLayout(new GridLayout(0, 2, 0, 0));
+		JLabel lblEtat = new JLabel("Etat de l'exemplaire :");
+		panInfoNordComboEtat.add(lblEtat);
+		this.cboEtat = new JComboBox<String>(new String[] {"Très bon", "Bon", "Mauvais", "Perdu"});
+		panInfoNordComboEtat.add(cboEtat);
+
 		/////////////////////Zone Centre, commentaire/////////////////////
 		JPanel panInfoCentre = new JPanel();
 		panInfoCentre.setBorder(new TitledBorder(null, "Commentaire :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -145,13 +167,24 @@ public class InformationLivre extends JPanel{
 
 	}
 
-	//Méthodes
+	/********************************************Méthodes*****************************************/
 	public void setCommentaireEditable(boolean bool) {
 		this.txtAreaComment.setEditable(bool);
 		return;
 	}
 
-	//Accesseurs
+	/**Définie l'état, donc l'affichage du statut de la combo.
+	 * 0 - Très bon
+	 * 1 - Bon
+	 * 2 - Mauvais
+	 * 3 - Perdu
+	 * 
+	 * @param i
+	 */
+	public void setComboEtat(int i) {
+		this.cboEtat.setSelectedIndex(i);
+	}
+	/************************************************Accesseurs***************************************/
 	public JTextField getTextFieldTitre() {
 		return textFieldTitre;
 	}

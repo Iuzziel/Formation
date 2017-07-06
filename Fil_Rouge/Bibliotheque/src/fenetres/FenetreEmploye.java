@@ -58,24 +58,23 @@ public class FenetreEmploye extends JFrame {
 		JPanel panTabGestEmpruntHaut = new JPanel();
 		tabGestEmprunt.add(panTabGestEmpruntHaut);
 		panTabGestEmpruntHaut.setLayout(new BorderLayout(0, 0));
-
-		//PanHaut Ajout du module recherche
-		RechercherUnLivre rechercherUnLivre = new RechercherUnLivre();
-		panTabGestEmpruntHaut.add(rechercherUnLivre, BorderLayout.WEST);
-		//PanHaut Ajout du module Information Livre
-		InformationLivre gestEmpruntInformationLivre = new InformationLivre();
-		gestEmpruntInformationLivre.setPreferredSize(new Dimension(300, 300));
-		gestEmpruntInformationLivre.setMinimumSize(new Dimension(300, 300));
-		panTabGestEmpruntHaut.add(gestEmpruntInformationLivre, BorderLayout.CENTER);
-		gestEmpruntInformationLivre.setCommentaireEditable(true);
+		//PanBas Ajout du module recherche adhérent
+		RechercherUnAdherent rechercherUnAdherent = new RechercherUnAdherent();
+		panTabGestEmpruntHaut.add(rechercherUnAdherent, BorderLayout.CENTER);
 
 		//Création Panel du bas
+		//PanBas Ajout du module recherche
 		JPanel panTabGestEmpruntBas = new JPanel();
 		tabGestEmprunt.add(panTabGestEmpruntBas);
 		panTabGestEmpruntBas.setLayout(new BorderLayout(0, 0));
-		//PanBas Ajout du module recherche adhérent
-		RechercherUnAdherent rechercherUnAdherent = new RechercherUnAdherent();
-		panTabGestEmpruntBas.add(rechercherUnAdherent, BorderLayout.CENTER);
+		RechercherUnLivre rechercherUnLivre = new RechercherUnLivre();
+		panTabGestEmpruntBas.add(rechercherUnLivre, BorderLayout.WEST);
+		//PanBas Ajout du module Information Livre
+		InformationLivre gestEmpruntInformationLivre = new InformationLivre();
+		gestEmpruntInformationLivre.setPreferredSize(new Dimension(300, 300));
+		gestEmpruntInformationLivre.setMinimumSize(new Dimension(300, 300));
+		panTabGestEmpruntBas.add(gestEmpruntInformationLivre, BorderLayout.CENTER);
+		gestEmpruntInformationLivre.setCommentaireEditable(true);
 		//PanBas Ajout du module Emprunt/Retour
 		EmpruntRetour empruntRetour = new EmpruntRetour();
 		panTabGestEmpruntBas.add(empruntRetour, BorderLayout.EAST);
