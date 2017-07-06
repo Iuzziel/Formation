@@ -13,26 +13,26 @@ public class GestionEmployesResultAffich extends JPanel {
 	 */
 	private static final long serialVersionUID = 629014741202551996L;
 
-	//Données membres
+	// Donnees membres
 	private JList<String> lstGestionEmployesResultAffich;
 
-	//Constructeur
+	// Constructeur
 	public GestionEmployesResultAffich() {
 		this.setLayout(new BorderLayout(5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-		//Création du panel principal, JTable des résultats de la recherche
-		//TODO Remplir la JList
+		// Creation du panel principal, JTable des resultats de la recherche
+		// TODO Remplir la JList
 		lstGestionEmployesResultAffich = new JList<String>();
 		JScrollPane panGestionEmployesResultAffich = new JScrollPane(lstGestionEmployesResultAffich);
 		this.add(panGestionEmployesResultAffich, BorderLayout.CENTER);
 
-		//Panel Statistiques
+		// Panel Statistiques
 		GestionEmployesEdition panGestionEmployesEdition = new GestionEmployesEdition();
 		this.add(panGestionEmployesEdition, BorderLayout.SOUTH);
 	}
 
-	//Accesseurs
+	// Accesseurs
 	public JList<String> getLstGestionEmployesResultAffich() {
 		return lstGestionEmployesResultAffich;
 	}

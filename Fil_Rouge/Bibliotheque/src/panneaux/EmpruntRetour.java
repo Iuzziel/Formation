@@ -22,27 +22,27 @@ public class EmpruntRetour extends JPanel {
 	 */
 	private static final long serialVersionUID = -2734805873664823251L;
 
-	//Données membres
+	// Donnees membres
 	private Vector<String> vctLivreScan = new Vector<String>();
 	private JList<String> lstLivreScan = new JList<String>(vctLivreScan);
 	private JScrollPane srlLivreScanne = new JScrollPane(lstLivreScan);
 
-	//Constructeur
+	// Constructeur
 	public EmpruntRetour() {
 		setMinimumSize(new Dimension(200, 200));
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Sélection Emprunt/Retour", TitledBorder.LEADING, TitledBorder.TOP));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Selection Emprunt/Retour", TitledBorder.LEADING, TitledBorder.TOP));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-		//tabEmpruntRetour
+		// tabEmpruntRetour
 		JTabbedPane tabEmpruntRetour = new JTabbedPane(JTabbedPane.TOP);
 		add(tabEmpruntRetour);
 
-		//tabEmpruntRetour/panEmprunt
+		// tabEmpruntRetour/panEmprunt
 		JPanel panEmprunt = new JPanel();
 		tabEmpruntRetour.addTab("Emprunt", panEmprunt);
 		panEmprunt.setLayout(new BoxLayout(panEmprunt, BoxLayout.Y_AXIS));
 		panEmprunt.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		//tabEmpruntRetour/panEmprunt/*
+		// tabEmpruntRetour/panEmprunt/*
 		JLabel lblEmpruntTitre = new JLabel("Emprunt");
 		panEmprunt.add(lblEmpruntTitre);
 		remplirListeLivreScan("blabla");
@@ -53,12 +53,12 @@ public class EmpruntRetour extends JPanel {
 		JButton btnEmpruntEnregistrerFinal = new JButton("Valider Emprunt");
 		panEmprunt.add(btnEmpruntEnregistrerFinal);
 
-		//tabEmpruntRetour/panRetour
+		// tabEmpruntRetour/panRetour
 		JPanel panRetour = new JPanel();
 		tabEmpruntRetour.addTab("Retour", panRetour);
 		panRetour.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		//tabEmpruntRetour/panRetour/*
+		// tabEmpruntRetour/panRetour/*
 		JLabel lblRetour = new JLabel("Retour");
 		panRetour.add(lblRetour);
 		JProgressBar pgsBarRetour = new JProgressBar();
@@ -67,9 +67,9 @@ public class EmpruntRetour extends JPanel {
 		panRetour.add(btnValiderRetour);
 	}
 
-	//Méthodes
-	public void remplirListeLivreScan (String codeExemplaire) {
-		//TODO Lier la Liste
+	// Methodes
+	public void remplirListeLivreScan(String codeExemplaire) {
+		// TODO Lier la Liste
 		vctLivreScan.addElement(codeExemplaire);
 		lstLivreScan.setMinimumSize(new Dimension(70, 150));
 		lstLivreScan.setPreferredSize(new Dimension(70, 150));

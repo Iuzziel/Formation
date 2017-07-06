@@ -9,14 +9,14 @@ import javax.swing.border.TitledBorder;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 
-public class GestionEmployesEdition extends JPanel{
+public class GestionEmployesEdition extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2902920964663284927L;
 
-	//Données membres
+	// Donnees membres
 	private JTextField txtFieldNom;
 	private JTextField txtFieldPrenom;
 	private JTextField txtFieldAdresse;
@@ -24,18 +24,18 @@ public class GestionEmployesEdition extends JPanel{
 	private JTextField txtFieldService;
 	private JTextField txtFieldRole;
 
-	//Constructeur
+	// Constructeur
 	public GestionEmployesEdition() {
 		this.setPreferredSize(new Dimension(350, 200));
-		this.setBorder(new TitledBorder(null, "Affichage des informations détaillées de l'employé sélectionné", TitledBorder.LEADING, TitledBorder.TOP));
+		this.setBorder(new TitledBorder(null, "Affichage des informations detaillees de l'employe selectionne", TitledBorder.LEADING, TitledBorder.TOP));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		//Création d'un panel pour les infos
+		// Creation d'un panel pour les infos
 		JPanel panInfo = new JPanel();
 		add(panInfo);
 		panInfo.setLayout(new GridLayout(0, 1, 2, 2));
 
-		//Création d'un panel pour le Nom + textFieldNom
+		// Creation d'un panel pour le Nom + textFieldNom
 		JPanel panInfoNom = new JPanel();
 		panInfo.add(panInfoNom);
 		panInfoNom.setLayout(new BoxLayout(panInfoNom, BoxLayout.X_AXIS));
@@ -46,18 +46,18 @@ public class GestionEmployesEdition extends JPanel{
 		panInfoNom.add(txtFieldNom);
 		txtFieldNom.setColumns(10);
 
-		//Création d'un panel pour le prénom + textFieldPrenom
+		// Creation d'un panel pour le prenom + textFieldPrenom
 		JPanel panInfoPrenom = new JPanel();
 		panInfo.add(panInfoPrenom);
 		panInfoPrenom.setLayout(new BoxLayout(panInfoPrenom, BoxLayout.X_AXIS));
-		JLabel lblPrenom = new JLabel("Prénom : ");
+		JLabel lblPrenom = new JLabel("Prenom : ");
 		panInfoPrenom.add(lblPrenom);
 		txtFieldPrenom = new JTextField();
 		txtFieldPrenom.setMaximumSize(new Dimension(2147483647, 20));
 		panInfoPrenom.add(txtFieldPrenom);
 		txtFieldPrenom.setColumns(10);
 
-		//Création d'un panel pour l'Adresse + textFieldAdresse
+		// Creation d'un panel pour l'Adresse + textFieldAdresse
 		JPanel panInfoAdresse = new JPanel();
 		panInfo.add(panInfoAdresse);
 		panInfoAdresse.setLayout(new BoxLayout(panInfoAdresse, BoxLayout.X_AXIS));
@@ -68,18 +68,18 @@ public class GestionEmployesEdition extends JPanel{
 		panInfoAdresse.add(txtFieldAdresse);
 		txtFieldAdresse.setColumns(10);
 
-		//Création d'un panel pour le numéroTel + textFieldTelephone
+		// Creation d'un panel pour le numeroTel + textFieldTelephone
 		JPanel panInfoTel = new JPanel();
 		panInfo.add(panInfoTel);
 		panInfoTel.setLayout(new BoxLayout(panInfoTel, BoxLayout.X_AXIS));
-		JLabel lblTelephone = new JLabel("Téléphone : ");
+		JLabel lblTelephone = new JLabel("Telephone : ");
 		panInfoTel.add(lblTelephone);
 		txtFieldTelephone = new JTextField();
 		txtFieldTelephone.setMaximumSize(new Dimension(2147483647, 20));
 		panInfoTel.add(txtFieldTelephone);
 		txtFieldTelephone.setColumns(10);
 
-		//Création d'un panel pour le Service + textFieldService
+		// Creation d'un panel pour le Service + textFieldService
 		JPanel panInfoService = new JPanel();
 		panInfo.add(panInfoService);
 		panInfoService.setLayout(new BoxLayout(panInfoService, BoxLayout.X_AXIS));
@@ -90,22 +90,22 @@ public class GestionEmployesEdition extends JPanel{
 		panInfoService.add(txtFieldService);
 		txtFieldService.setColumns(10);
 
-		//Création d'un panel pour le Role + textFieldRole
+		// Creation d'un panel pour le Role + textFieldRole
 		JPanel panInfoRole = new JPanel();
 		panInfo.add(panInfoRole);
 		panInfoRole.setLayout(new BoxLayout(panInfoRole, BoxLayout.X_AXIS));
-		JLabel lblRoleOccupe = new JLabel("Rôle occupé : ");
+		JLabel lblRoleOccupe = new JLabel("Rôle occupe : ");
 		panInfoRole.add(lblRoleOccupe);
 		txtFieldRole = new JTextField();
 		txtFieldRole.setMaximumSize(new Dimension(2147483647, 20));
 		panInfoRole.add(txtFieldRole);
 		txtFieldRole.setColumns(10);
 
-		//Ajout des boutons
+		// Ajout des boutons
 		JPanel panBtn = new JPanel();
-		JButton btnEditer = new JButton("Editer cet employé");
+		JButton btnEditer = new JButton("Editer cet employe");
 		JButton btnAnnuler = new JButton("Annuler");
-		JButton btnSupprimer = new JButton("Supprimer cet employé");
+		JButton btnSupprimer = new JButton("Supprimer cet employe");
 		panBtn.setLayout(new BoxLayout(panBtn, BoxLayout.X_AXIS));
 		panBtn.add(btnEditer);
 		panBtn.add(btnAnnuler);
@@ -113,7 +113,7 @@ public class GestionEmployesEdition extends JPanel{
 		this.add(panBtn);
 	}
 
-	//Accesseurs
+	// Accesseurs
 	public JTextField getTxtFieldNom() {
 		return txtFieldNom;
 	}

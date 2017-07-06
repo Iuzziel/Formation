@@ -26,18 +26,19 @@ public class GestionEmployes extends JPanel {
 		setPreferredSize(new Dimension(250, 500));
 		setLayout(new BorderLayout(5, 5));
 
-		//Création du panel principal
+		// Creation du panel principal
 		JPanel panGestionEmployes = new JPanel();
-		panGestionEmployes.setBorder(new TitledBorder(null, "Gestion du rôle des employés", TitledBorder.LEADING, TitledBorder.TOP));
+		panGestionEmployes.setBorder(
+				new TitledBorder(null, "Gestion du rôle des employes", TitledBorder.LEADING, TitledBorder.TOP));
 		panGestionEmployes.setLayout(new BoxLayout(panGestionEmployes, BoxLayout.Y_AXIS));
 		add(panGestionEmployes);
 
-		//Créations du panneau des conditions
-		//Créations des données du panneau/titre
+		// Creations du panneau des conditions
+		// Creations des donnees du panneau/titre
 		JLabel lblTitre = new JLabel("Conditions pour apparaître sur la liste : ");
 		panGestionEmployes.add(lblTitre);
 
-		//Créations du panneau des conditions/Bouton Radio groupé Tous&Filtrer
+		// Creations du panneau des conditions/Bouton Radio groupe Tous&Filtrer
 		JRadioButton rdoTous = new JRadioButton("Tous");
 		panGestionEmployes.add(rdoTous);
 		JRadioButton rdoFiltrer = new JRadioButton("Filtrer");
@@ -46,29 +47,30 @@ public class GestionEmployes extends JPanel {
 		grpTousFiltrer.add(rdoTous);
 		grpTousFiltrer.add(rdoFiltrer);
 
-		//Créations du panneau des conditions/Checkbox des 4 filtres
-		JCheckBox chkBiblio = new JCheckBox("Bibliothécaire");
-		panGestionEmployes.add(chkBiblio);		
+		// Creations du panneau des conditions/Checkbox des 4 filtres
+		JCheckBox chkBiblio = new JCheckBox("Bibliothecaire");
+		panGestionEmployes.add(chkBiblio);
 		JCheckBox chkRespons = new JCheckBox("Responsable");
-		panGestionEmployes.add(chkRespons);		
+		panGestionEmployes.add(chkRespons);
 		JCheckBox chkGestionnaire = new JCheckBox("Gestionnaire de fond");
-		panGestionEmployes.add(chkGestionnaire);		
+		panGestionEmployes.add(chkGestionnaire);
 		JCheckBox chkAdmin = new JCheckBox("Administrateur");
 		panGestionEmployes.add(chkAdmin);
 
 		panGestionEmployes.add(new Separator());
 
-		//Créations du panneau des conditions/Paneau des champs de recherche
-		//Principale
+		// Creations du panneau des conditions/Paneau des champs de recherche
+		// Principale
 		JPanel panRecherche = new JPanel();
 		panGestionEmployes.add(panRecherche);
 		panRecherche.setLayout(new BorderLayout(0, 0));
-		//Principale/Panneaux DES champs
+		// Principale/Panneaux DES champs
 		JPanel panRechercheChamps = new JPanel();
 		panRecherche.add(panRechercheChamps, BorderLayout.NORTH);
 		panRechercheChamps.setLayout(new BoxLayout(panRechercheChamps, BoxLayout.Y_AXIS));
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ nom
+		// Creations du panneau des conditions/Paneau des champs de recherche/panneau +
+		// label + champ nom
 		JPanel panRechercheChampsNom = new JPanel();
 		panRechercheChamps.add(panRechercheChampsNom);
 
@@ -79,7 +81,8 @@ public class GestionEmployes extends JPanel {
 		panRechercheChampsNom.add(txtFieldNom);
 		txtFieldNom.setColumns(10);
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ prénom
+		// Creations du panneau des conditions/Paneau des champs de recherche/panneau +
+		// label + champ prenom
 		JPanel panRechercheChampsPrenom = new JPanel();
 		panRechercheChamps.add(panRechercheChampsPrenom);
 
@@ -90,7 +93,8 @@ public class GestionEmployes extends JPanel {
 		panRechercheChampsPrenom.add(txtFieldPrenom);
 		txtFieldPrenom.setColumns(10);
 
-		//Créations du panneau des conditions/Paneau des champs de recherche/panneau + label + champ identifiant
+		// Creations du panneau des conditions/Paneau des champs de recherche/panneau +
+		// label + champ identifiant
 		JPanel panRechercheChampsId = new JPanel();
 		panRechercheChamps.add(panRechercheChampsId);
 
@@ -103,7 +107,7 @@ public class GestionEmployes extends JPanel {
 
 	}
 
-	//Accesseurs
+	// Accesseurs
 	public JTextField getTxtFieldNom() {
 		return txtFieldNom;
 	}

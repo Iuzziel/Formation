@@ -15,15 +15,15 @@ import javax.swing.BoxLayout;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 
-public class RechercherUnAdherent extends JPanel{
+public class RechercherUnAdherent extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3793794312904965025L;
 
-	//Données membre 
-	//TODO Penser à changer avec getter et setter dans le code final
+	// Donnees membre
+	// TODO Penser a� changer avec getter et setter dans le code final
 	private JTextField textFieldNom;
 	private JTextField textFieldPrenom;
 	private JTextField textFieldNumeroAdherent;
@@ -35,22 +35,23 @@ public class RechercherUnAdherent extends JPanel{
 	private JTable tabRenvoiResultatsAdherent;
 	private JTable tabAdherentLivreEmprunte;
 
-	//Constructeur
+	// Constructeur
 	public RechercherUnAdherent() {
 		setMinimumSize(new Dimension(200, 200));
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rechercher un adh\u00E9rent", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rechercher un adh\u00E9rent",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
 		JPanel panRechercheResultats = new JPanel();
 		add(panRechercheResultats);
 		panRechercheResultats.setLayout(new BorderLayout(5, 5));
 
-		//////////////////////////////////////Panel de la recherche d'un adhérent//////////////////////////////////////
+		//***************************************Panel de la recherche d'un adherent***********************************//
 		JPanel panRechercheAdherent = new JPanel();
 		panRechercheResultats.add(panRechercheAdherent, BorderLayout.NORTH);
 		panRechercheAdherent.setLayout(new BoxLayout(panRechercheAdherent, BoxLayout.Y_AXIS));
 
-		//panRechercheNom
+		// panRechercheNom
 		JPanel panRechercheNom = new JPanel();
 		panRechercheNom.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panRechercheNom.setMaximumSize(new Dimension(600, 35));
@@ -62,7 +63,7 @@ public class RechercherUnAdherent extends JPanel{
 		textFieldNom.setColumns(10);
 		panRechercheNom.add(textFieldNom);
 
-		//panRecherchePrenom
+		// panRecherchePrenom
 		JPanel panRecherchePrenom = new JPanel();
 		panRecherchePrenom.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panRecherchePrenom.setMaximumSize(new Dimension(600, 35));
@@ -74,7 +75,7 @@ public class RechercherUnAdherent extends JPanel{
 		textFieldPrenom.setColumns(10);
 		panRecherchePrenom.add(textFieldPrenom);
 
-		//panRechercheCodeAdhérent
+		// panRechercheCodeAdherent
 		JPanel panRechercheNumeroAdherent = new JPanel();
 		panRechercheNumeroAdherent.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panRechercheNumeroAdherent.setMaximumSize(new Dimension(600, 35));
@@ -86,7 +87,7 @@ public class RechercherUnAdherent extends JPanel{
 		textFieldNumeroAdherent.setColumns(10);
 		panRechercheNumeroAdherent.add(textFieldNumeroAdherent);
 
-		//panRechercheBoutton
+		// panRechercheBoutton
 		JPanel panRechercheBoutton = new JPanel();
 		panRechercheAdherent.add(panRechercheBoutton);
 		JButton btnRechercherAdherent = new JButton("Rechercher");
@@ -95,13 +96,13 @@ public class RechercherUnAdherent extends JPanel{
 		JButton btnRechercherAdherentReinit = new JButton("R\u00E9initialiser");
 		panRechercheBoutton.add(btnRechercherAdherentReinit);
 
-		//////////////////////////////////////Panel des resultats//////////////////////////////////////
+		//******************************************************Panel des resultats**************************************//
 		JPanel panResultatAdherent = new JPanel();
 		panRechercheResultats.add(panResultatAdherent);
 		panResultatAdherent.setLayout(new BorderLayout(5, 5));
 
-		//Création label, de la Jtable, association à la JScrollPane, puis ajout dans le panel, ensuite boutons et leur panel
-		//TODO Remplir la JTable
+		// Creation label, de la Jtable, association a� la JScrollPane, puis ajout dans le panel, ensuite boutons et leur panel
+		// TODO Remplir la JTable
 		JLabel lblRenvoiResultatsTitre = new JLabel("Adh\u00E9rent(s) correspondant(s) :");
 		panResultatAdherent.add(lblRenvoiResultatsTitre, BorderLayout.NORTH);
 		tabRenvoiResultatsAdherent = new JTable();
@@ -119,18 +120,19 @@ public class RechercherUnAdherent extends JPanel{
 		JButton btnCreerAdherent = new JButton("Cr\u00E9er Adh\u00E9rent");
 		panResultatAdherentBtn.add(btnCreerAdherent);
 
-		//////////////////////////////////////Panel des infos adhérent renvoyé après la recherche//////////////////////////////////////
-		//Renvoie de tout les label TODO Ajouter les textfields liés aux infos
+		//*************************************Panel des infos adherent renvoye apres la recherche**********************************//
+		// Renvoie de tout les label TODO Ajouter les textfields lies aux infos
 		JPanel panInfoAdherent = new JPanel();
 		panInfoAdherent.setMinimumSize(new Dimension(150, 100));
-		panInfoAdherent.setBorder(new TitledBorder(null, "Information sur l'adh\u00E9rent", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panInfoAdherent.setBorder(new TitledBorder(null, "Information sur l'adh\u00E9rent", TitledBorder.LEADING,
+				TitledBorder.TOP, null, null));
 		add(panInfoAdherent);
 		panInfoAdherent.setLayout(new BorderLayout(5, 5));
 		JPanel panInfoAdherentPerso = new JPanel();
 		panInfoAdherent.add(panInfoAdherentPerso, BorderLayout.NORTH);
 		panInfoAdherentPerso.setLayout(new BoxLayout(panInfoAdherentPerso, BoxLayout.Y_AXIS));
 
-		//panInfoAdherentPersoNom contenant Label et txtField
+		// panInfoAdherentPersoNom contenant Label et txtField
 		JPanel panInfoAdherentPersoNom = new JPanel();
 		panInfoAdherentPerso.add(panInfoAdherentPersoNom);
 		panInfoAdherentPersoNom.setLayout(new BoxLayout(panInfoAdherentPersoNom, BoxLayout.X_AXIS));
@@ -141,7 +143,7 @@ public class RechercherUnAdherent extends JPanel{
 		txtFieldInfoNom.setColumns(10);
 		panInfoAdherentPersoNom.add(txtFieldInfoNom);
 
-		//panInfoAdherentPersoPrenom contenant Label et txtField
+		// panInfoAdherentPersoPrenom contenant Label et txtField
 		JPanel panInfoAdherentPersoPrenom = new JPanel();
 		panInfoAdherentPerso.add(panInfoAdherentPersoPrenom);
 		panInfoAdherentPersoPrenom.setLayout(new BoxLayout(panInfoAdherentPersoPrenom, BoxLayout.X_AXIS));
@@ -152,7 +154,7 @@ public class RechercherUnAdherent extends JPanel{
 		txtFieldInfoPrenom.setColumns(10);
 		panInfoAdherentPersoPrenom.add(txtFieldInfoPrenom);
 
-		//panInfoAdherentPersoAdresse contenant Label et txtField
+		// panInfoAdherentPersoAdresse contenant Label et txtField
 		JPanel panInfoAdherentPersoAdresse = new JPanel();
 		panInfoAdherentPerso.add(panInfoAdherentPersoAdresse);
 		panInfoAdherentPersoAdresse.setLayout(new BoxLayout(panInfoAdherentPersoAdresse, BoxLayout.X_AXIS));
@@ -163,7 +165,7 @@ public class RechercherUnAdherent extends JPanel{
 		txtFieldInfoAdresse.setColumns(10);
 		panInfoAdherentPersoAdresse.add(txtFieldInfoAdresse);
 
-		//panInfoAdherentPersoDerniereCoti contenant Label et txtField
+		// panInfoAdherentPersoDerniereCoti contenant Label et txtField
 		JPanel panInfoAdherentPersoDerniereCoti = new JPanel();
 		panInfoAdherentPersoDerniereCoti.setMaximumSize(new Dimension(32767, 20));
 		panInfoAdherentPerso.add(panInfoAdherentPersoDerniereCoti);
@@ -175,7 +177,7 @@ public class RechercherUnAdherent extends JPanel{
 		txtFieldInfoDateCote.setColumns(10);
 		panInfoAdherentPersoDerniereCoti.add(txtFieldInfoDateCote);
 
-		//panInfoAdherentPersoCotiOk contenant Label et txtField
+		// panInfoAdherentPersoCotiOk contenant Label et txtField
 		JPanel panInfoAdherentPersoCotiOk = new JPanel();
 		panInfoAdherentPersoCotiOk.setMaximumSize(new Dimension(32767, 20));
 		panInfoAdherentPerso.add(panInfoAdherentPersoCotiOk);
@@ -187,15 +189,15 @@ public class RechercherUnAdherent extends JPanel{
 		txtFieldInfoCotiOk.setColumns(10);
 		panInfoAdherentPersoCotiOk.add(txtFieldInfoCotiOk);
 
-		//panInfoAdherentPersoBtn contenant le bouton Editer
+		// panInfoAdherentPersoBtn contenant le bouton Editer
 		JPanel panInfoAdherentPersoBtn = new JPanel();
 		panInfoAdherentPerso.add(panInfoAdherentPersoBtn);
 		panInfoAdherentPersoBtn.setLayout(new BoxLayout(panInfoAdherentPersoBtn, BoxLayout.X_AXIS));
 		JButton btnEditerCetAdhrent = new JButton("Editer cet Adh\u00E9rent ?");
 		panInfoAdherentPersoBtn.add(btnEditerCetAdhrent);
 
-		//Création de la Jtable, association à la JScrollPane, puis ajout dans le panel
-		//TODO Remplir la JTable
+		// Creation de la Jtable, association a la JScrollPane, puis ajout dans le panel
+		// TODO Remplir la JTable
 		JPanel panInfoEmpruntAdherent = new JPanel();
 		panInfoAdherent.add(panInfoEmpruntAdherent, BorderLayout.CENTER);
 		panInfoEmpruntAdherent.setLayout(new BorderLayout(5, 5));
@@ -208,7 +210,7 @@ public class RechercherUnAdherent extends JPanel{
 
 	}
 
-	//Accesseurs
+	// Accesseurs
 	public JTextField getTextFieldNom() {
 		return textFieldNom;
 	}

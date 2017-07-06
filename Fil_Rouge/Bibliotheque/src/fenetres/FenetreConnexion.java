@@ -14,43 +14,42 @@ import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 
-public class FenetreConnexion extends JFrame{
+public class FenetreConnexion extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6196409418829667588L;
-	
-	//Données membre
+
+	// Donnees membre
 	private JTextField textFieldConnexionIdentifiant;
 	private JPasswordField pwdFieldConnexion;
 
-	
-	//Constructeur de la fenetre
-	public FenetreConnexion(){
+	// Constructeur de la fenetre
+	public FenetreConnexion() {
 		setPreferredSize(new Dimension(275, 400));
 		setMinimumSize(new Dimension(275, 200));
 		setMaximumSize(new Dimension(400, 400));
 		getContentPane().setLayout(new BorderLayout(5, 5));
 
-		//Titre
+		// Titre
 		JLabel lblConnexionAuxComptes = new JLabel("Connexion aux comptes Employ\u00E9s :");
 		lblConnexionAuxComptes.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblConnexionAuxComptes.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblConnexionAuxComptes, BorderLayout.NORTH);
 
-		//Panel IdMdp + Boutton
+		// Panel IdMdp + Boutton
 		JPanel panConnexion = new JPanel();
 		panConnexion.setBorder(new TitledBorder(null, "Entrez vos identifiants", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(panConnexion, BorderLayout.CENTER);
 		panConnexion.setLayout(new BoxLayout(panConnexion, BoxLayout.Y_AXIS));
 
-		//Panel Id + MdP
+		// Panel Id + MdP
 		JPanel panConnexionIdPass = new JPanel();
 		panConnexion.add(panConnexionIdPass);
 		panConnexionIdPass.setLayout(new GridLayout(0, 1, 5, 5));
 
-		//Panel Id
+		// Panel Id
 		JPanel panConnexionId = new JPanel();
 		panConnexionIdPass.add(panConnexionId);
 
@@ -60,7 +59,7 @@ public class FenetreConnexion extends JFrame{
 		panConnexionId.add(textFieldConnexionIdentifiant);
 		textFieldConnexionIdentifiant.setColumns(10);
 
-		//Panel MdP
+		// Panel MdP
 		JPanel panConnexionPass = new JPanel();
 		panConnexionIdPass.add(panConnexionPass);
 
@@ -70,7 +69,7 @@ public class FenetreConnexion extends JFrame{
 		panConnexionPass.add(pwdFieldConnexion);
 		pwdFieldConnexion.setColumns(10);
 
-		//Panel des boutton
+		// Panel des boutton
 		JPanel panConnexionBtn = new JPanel();
 		panConnexionIdPass.add(panConnexionBtn);
 		JButton btnConnexionValider = new JButton("Valider");
@@ -80,26 +79,21 @@ public class FenetreConnexion extends JFrame{
 
 	}
 
-
-	//Accesseurs
+	// Accesseurs
 	public JTextField getTextFieldConnexionIdentifiant() {
 		return textFieldConnexionIdentifiant;
 	}
-
 
 	public void setTextFieldConnexionIdentifiant(JTextField textFieldConnexionIdentifiant) {
 		this.textFieldConnexionIdentifiant = textFieldConnexionIdentifiant;
 	}
 
-
 	public JPasswordField getPwdFieldConnexion() {
 		return pwdFieldConnexion;
 	}
 
-
 	public void setPwdFieldConnexion(JPasswordField pwdFieldConnexion) {
 		this.pwdFieldConnexion = pwdFieldConnexion;
 	}
-	
-	
+
 }

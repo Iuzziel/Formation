@@ -15,18 +15,18 @@ public class GestionStockResultAffich extends JPanel {
 	 */
 	private static final long serialVersionUID = 629014741202551996L;
 
-	//Constructeur
+	// Constructeur
 	public GestionStockResultAffich() {
 		this.setLayout(new BorderLayout(5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-		//Création du panel principal, JTable des résultats de la recherche
-		//TODO Remplir la JList
+		// Creation du panel principal, JTable des resultats de la recherche
+		// TODO Remplir la JList
 		JList<String> lstGestionListeResultAffich = new JList<String>();
 		JScrollPane panGestionListeResultAffich = new JScrollPane(lstGestionListeResultAffich);
 		this.add(panGestionListeResultAffich, BorderLayout.CENTER);
 
-		//Panel Statistiques
+		// Panel Statistiques
 		JPanel panGestListStats = new JPanel();
 		panGestListStats.setPreferredSize(new Dimension(250, 150));
 		panGestListStats.setBorder(new TitledBorder(null, "Affichage des statistiques de la liste", TitledBorder.LEADING, TitledBorder.TOP));

@@ -21,28 +21,28 @@ public class GestionStock extends JPanel {
 	 */
 	private static final long serialVersionUID = -3278275461451702696L;
 
-	//Constructeur
+	// Constructeur
 	public GestionStock() {
 		setMinimumSize(new Dimension(200, 400));
 		setPreferredSize(new Dimension(250, 500));
 		setLayout(new BorderLayout(5, 5));
 
-		//Création du panel principal
+		// Creation du panel principal
 		JPanel panGestionListe = new JPanel();
 		panGestionListe.setBorder(new TitledBorder(null, "Gestion des Listes", TitledBorder.LEADING, TitledBorder.TOP));
 		panGestionListe.setLayout(new BoxLayout(panGestionListe, BoxLayout.Y_AXIS));
 		add(panGestionListe);
 
-		//Création des blocs de conditions de recherche
+		// Creation des blocs de conditions de recherche
 
-		//panGestListeLivre		
-		//panGestListeLivre/OptionLivre
+		// panGestListeLivre
+		// panGestListeLivre/OptionLivre
 		JPanel panGestListeLivre = new JPanel();
 		panGestionListe.add(panGestListeLivre);
 		panGestListeLivre.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JRadioButton optLivre = new JRadioButton("Livre");
 		panGestListeLivre.add(optLivre);
-		//panGestListeLivre/CheckBox complémentaire
+		// panGestListeLivre/CheckBox complementaire
 		JCheckBox chkLivreStock = new JCheckBox("Dans le stock");
 		panGestListeLivre.add(chkLivreStock);
 		JCheckBox chkLivreSorti = new JCheckBox("Sorti");
@@ -50,27 +50,27 @@ public class GestionStock extends JPanel {
 
 		JLabel lblOptionnel = new JLabel("Optionnel : ");
 		panGestListeLivre.add(lblOptionnel);
-		JCheckBox chkSortiRegle = new JCheckBox("En règle");
+		JCheckBox chkSortiRegle = new JCheckBox("En regle");
 		panGestListeLivre.add(chkSortiRegle);
 		JCheckBox chkSortiRetard = new JCheckBox("En retard");
 		panGestListeLivre.add(chkSortiRetard);
 
 		panGestionListe.add(new Separator());
 
-		//panGestListeAdherent
+		// panGestListeAdherent
 		JPanel panGestListeAdherent = new JPanel();
 		panGestionListe.add(panGestListeAdherent);
 		panGestListeAdherent.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JRadioButton optAdherent = new JRadioButton("Adherent");
 		panGestListeAdherent.add(optAdherent);
-		//panGestListeAdherent/Checkbox
-		JCheckBox chkAdherentCotiOk = new JCheckBox("Cotisation en règle");
+		// panGestListeAdherent/Checkbox
+		JCheckBox chkAdherentCotiOk = new JCheckBox("Cotisation en regle");
 		panGestListeAdherent.add(chkAdherentCotiOk);
 		JCheckBox chkAdherentCotiNok = new JCheckBox("Cotisation en retard");
 		panGestListeAdherent.add(chkAdherentCotiNok);
 		JCheckBox chkAdherentEnCoursEmprunt = new JCheckBox("Livre en cours d'emprunt");
 		panGestListeAdherent.add(chkAdherentEnCoursEmprunt);
-		JCheckBox chkAdherentEnCoursEmpruntOk = new JCheckBox("En règle");
+		JCheckBox chkAdherentEnCoursEmpruntOk = new JCheckBox("En regle");
 		panGestListeAdherent.add(chkAdherentEnCoursEmpruntOk);
 		JCheckBox chkAdherentEnCoursEmpruntNok = new JCheckBox("En retard");
 		panGestListeAdherent.add(chkAdherentEnCoursEmpruntNok);
@@ -79,16 +79,16 @@ public class GestionStock extends JPanel {
 
 		panGestionListe.add(new Separator());
 
-		//panGestListePeriode
+		// panGestListePeriode
 		JPanel panGestListePeriode = new JPanel();
 		panGestionListe.add(panGestListePeriode);
-		//TODO Remplir les ComboBox de date
-		//panGestListePeriode/Date de reference
+		// TODO Remplir les ComboBox de date
+		// panGestListePeriode/Date de reference
 		JLabel lblDateDeReference = new JLabel("Date de R\u00E9f\u00E9rence : ");
 		panGestListePeriode.add(lblDateDeReference);
 		JComboBox<String> cboDateDeRef = new JComboBox<String>();
 		panGestListePeriode.add(cboDateDeRef);
-		//panGestListePeriode/Sur les...
+		// panGestListePeriode/Sur les...
 		JLabel lblDateSurLes = new JLabel("Sur les : ");
 		panGestListePeriode.add(lblDateSurLes);
 		JComboBox<String> cboDateSurLes = new JComboBox<String>();
@@ -96,8 +96,8 @@ public class GestionStock extends JPanel {
 
 		panGestionListe.add(new Separator());
 
-		//panGestListeTri
-		//TODO Remplir les comboBox en fonction des conditions
+		// panGestListeTri
+		// TODO Remplir les comboBox en fonction des conditions
 		JPanel panGestListeTri = new JPanel();
 		panGestionListe.add(panGestListeTri);
 		JLabel lblConditionUtilisePour = new JLabel("Condition utilis\u00E9e pour le tri  : ");
@@ -111,7 +111,7 @@ public class GestionStock extends JPanel {
 
 		panGestionListe.add(new Separator());
 
-		//panGestListeBtn
+		// panGestListeBtn
 		JPanel panGestListeBtn = new JPanel();
 		panGestionListe.add(panGestListeBtn);
 		panGestListeBtn.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -120,19 +120,19 @@ public class GestionStock extends JPanel {
 		JButton btnGestListeBtnImprimer = new JButton("Imprimer");
 		panGestListeBtn.add(btnGestListeBtnImprimer);
 
-		//Création des groupes et btns Radio
-		//Duo Livre / Adhérent
+		// Creation des groupes et btns Radio
+		// Duo Livre / Adherent
 		ButtonGroup grpLivreAdherent = new ButtonGroup();
 		grpLivreAdherent.add(optAdherent);
 		grpLivreAdherent.add(optLivre);
 
-		/*Sur la maquette, +4 radio btn, mais remplacé par des checkbox
-		ButtonGroup grpSorti = new ButtonGroup();
-		JRadioButton optSortiEnRegle = new JRadioButton("En règle");
-		JRadioButton optSortiEnRetard = new JRadioButton("En retard");
-		ButtonGroup grpEmprunte = new ButtonGroup();
-		JRadioButton optEmprunteEnRegle = new JRadioButton("En règle");
-		JRadioButton optEmprunteEnRetard = new JRadioButton("En retard");
+		/*
+		 * Sur la maquette, +4 radio btn, mais remplace par des checkbox ButtonGroup
+		 * grpSorti = new ButtonGroup(); JRadioButton optSortiEnRegle = new
+		 * JRadioButton("En regle"); JRadioButton optSortiEnRetard = new
+		 * JRadioButton("En retard"); ButtonGroup grpEmprunte = new ButtonGroup();
+		 * JRadioButton optEmprunteEnRegle = new JRadioButton("En regle"); JRadioButton
+		 * optEmprunteEnRetard = new JRadioButton("En retard");
 		 */
 	}
 }

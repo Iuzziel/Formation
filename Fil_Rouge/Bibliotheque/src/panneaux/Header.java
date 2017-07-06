@@ -17,27 +17,30 @@ public class Header extends JPanel {
 	 */
 	private static final long serialVersionUID = 6494265312863046861L;
 
-	//***********************************************Données membre*****************************************//
+	// ***********************************************Donnees membre*****************************************//
 	private JLabel lblHeaderSeConnecter = new JLabel("Se connecter");
 
-	//***********************************************Constructeur*****************************************//
-	/**Création du module Header. Commun à toutes les fenêtres du logiciel. Reçoit le titre de la fenêtre en string en argument.
-	 *  
-	 *	@param titre
+	// ***********************************************Constructeur*****************************************//
+	/**
+	 * Creation du module Header. Commun a toutes les fenetres du logiciel.
+	 * Recoit le titre de la fenetre en string en argument.
+	 * 
+	 * @param titre
 	 */
-	public Header(String titre) {//TODO Rendre la création de la fenêtre conditionné par l'état de la session
+	public Header(String titre) {// TODO Rendre la creation de la fenetre conditionne par l'etat de la session
 		setLayout(new BorderLayout(5, 5));
 		JPanel panHeaderTitre = new JPanel();
 		add(panHeaderTitre, BorderLayout.CENTER);
 
-		//Titre
+		// Titre
 		JLabel lblHeaderTitrePage = new JLabel(titre);
 		lblHeaderTitrePage.setFont(new Font("Tahoma", Font.BOLD, 16));
 		panHeaderTitre.add(lblHeaderTitrePage);
 
-		//Panneau de connexion
+		// Panneau de connexion
 		JPanel panHeaderConnexion = new JPanel();
-		panHeaderConnexion.setBorder(new TitledBorder(null, "Fonction avanc\u00E9e", TitledBorder.LEADING, TitledBorder.TOP));
+		panHeaderConnexion
+		.setBorder(new TitledBorder(null, "Fonction avanc\u00E9e", TitledBorder.LEADING, TitledBorder.TOP));
 		add(panHeaderConnexion, BorderLayout.EAST);
 
 		//
@@ -51,7 +54,7 @@ public class Header extends JPanel {
 		panHeaderConnexion.add(lblHeaderSeConnecter);
 	}
 
-	//***********************************************Accesseurs*****************************************//
+	// ***********************************************Accesseurs*****************************************//
 	public JLabel getLblHeaderSeConnecter() {
 		return lblHeaderSeConnecter;
 	}
@@ -60,12 +63,12 @@ public class Header extends JPanel {
 		this.lblHeaderSeConnecter = lblHeaderSeConnecter;
 	}
 
-	//***********************************************Listerners*****************************************//
+	// ***********************************************Listerners*****************************************//
 	class AppMouseListener implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// Auto-generated method stub
-			if(e.getSource() == lblHeaderSeConnecter) {
+			if (e.getSource() == lblHeaderSeConnecter) {
 				FenetreConnexion fenetreConnexion = new FenetreConnexion();
 				fenetreConnexion.setLocationRelativeTo(null);
 				fenetreConnexion.setVisible(true);

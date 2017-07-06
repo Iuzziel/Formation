@@ -13,14 +13,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.border.EmptyBorder;
 
-public class InformationLivre extends JPanel{
+public class InformationLivre extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3793794312904965025L;
 
-	//Données membre
+	// Donnees membre
 	private JTextField textFieldTitre;
 	private JTextField textFieldAuteur;
 	private JTextField textFieldTheme;
@@ -33,19 +33,19 @@ public class InformationLivre extends JPanel{
 	private JTextArea txtAreaComment;
 	private JComboBox<String> cboEtat;
 
-	//Constructeur
+	// Constructeur
 	public InformationLivre() {
 		setBorder(new TitledBorder(null, "Information sur le livre", TitledBorder.LEADING, TitledBorder.TOP));
 		setLayout(new BorderLayout(0, 0));
 
-		/////////////////////Regroupement des Infos + TextField/////////////////////
+		///////////////////// Regroupement des Infos + TextField/////////////////////
 		JPanel panInfoNord = new JPanel();
 		panInfoNord.setBorder(new EmptyBorder(0, 2, 5, 2));
 		add(panInfoNord, BorderLayout.NORTH);
 		panInfoNord.setLayout(new GridLayout(0, 2, 5, 5));
 
-		/////////////////////Création des Infos & TextField/////////////////////
-		//Titre
+		///////////////////// Creation des Infos & TextField/////////////////////
+		// Titre
 		JPanel panInfoNordTitre = new JPanel();
 		panInfoNord.add(panInfoNordTitre);
 		panInfoNordTitre.setLayout(new GridLayout(0, 2, 0, 0));
@@ -55,7 +55,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordTitre.add(textFieldTitre);
 		textFieldTitre.setColumns(10);
 
-		//Nombre d'exemplaire dispo
+		// Nombre d'exemplaire dispo
 		JPanel panInfoNordNbExemplaireDispo = new JPanel();
 		panInfoNord.add(panInfoNordNbExemplaireDispo);
 		panInfoNordNbExemplaireDispo.setLayout(new GridLayout(0, 2, 0, 0));
@@ -65,7 +65,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordNbExemplaireDispo.add(textFieldNbExemplaireDispo);
 		textFieldNbExemplaireDispo.setColumns(5);
 
-		//Auteur
+		// Auteur
 		JPanel panInfoNordAuteur = new JPanel();
 		panInfoNord.add(panInfoNordAuteur);
 		panInfoNordAuteur.setLayout(new GridLayout(0, 2, 0, 0));
@@ -75,7 +75,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordAuteur.add(textFieldAuteur);
 		textFieldAuteur.setColumns(10);
 
-		//Nombre d'exemplaire dispo dans CETTE bibliothèque
+		// Nombre d'exemplaire dispo dans CETTE bibliotheque
 		JPanel panInfoNordNbExemplaireDispoBiblio = new JPanel();
 		panInfoNord.add(panInfoNordNbExemplaireDispoBiblio);
 		panInfoNordNbExemplaireDispoBiblio.setLayout(new GridLayout(0, 2, 0, 0));
@@ -85,7 +85,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordNbExemplaireDispoBiblio.add(textFieldNbExemplaireDispoBiblio);
 		textFieldNbExemplaireDispoBiblio.setColumns(5);
 
-		//Theme
+		// Theme
 		JPanel panInfoNordTheme = new JPanel();
 		panInfoNord.add(panInfoNordTheme);
 		panInfoNordTheme.setLayout(new GridLayout(0, 2, 0, 0));
@@ -95,7 +95,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordTheme.add(textFieldTheme);
 		textFieldTheme.setColumns(10);
 
-		//Emplacement
+		// Emplacement
 		JPanel panInfoNordEmplacement = new JPanel();
 		panInfoNord.add(panInfoNordEmplacement);
 		panInfoNordEmplacement.setLayout(new GridLayout(0, 2, 0, 0));
@@ -105,7 +105,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordEmplacement.add(textFieldEmplacement);
 		textFieldEmplacement.setColumns(10);
 
-		//ISBN
+		// ISBN
 		JPanel panInfoNordISBN = new JPanel();
 		panInfoNord.add(panInfoNordISBN);
 		panInfoNordISBN.setLayout(new GridLayout(0, 2, 0, 0));
@@ -115,7 +115,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordISBN.add(textFieldISBN);
 		textFieldISBN.setColumns(10);
 
-		//ISSN
+		// ISSN
 		JPanel panInfoNordISSN = new JPanel();
 		panInfoNord.add(panInfoNordISSN);
 		panInfoNordISSN.setLayout(new GridLayout(0, 2, 0, 0));
@@ -125,7 +125,7 @@ public class InformationLivre extends JPanel{
 		panInfoNordISSN.add(textFieldISSN);
 		textFieldISSN.setColumns(10);
 
-		//Code exemplaire
+		// Code exemplaire
 		JPanel panInfoNordExemplaire = new JPanel();
 		panInfoNord.add(panInfoNordExemplaire);
 		panInfoNordExemplaire.setLayout(new GridLayout(0, 2, 0, 0));
@@ -135,18 +135,19 @@ public class InformationLivre extends JPanel{
 		panInfoNordExemplaire.add(textFieldExemplaire);
 		textFieldExemplaire.setColumns(10);
 
-		//Combo état du livre
+		// Combo etat du livre
 		JPanel panInfoNordComboEtat = new JPanel();
 		panInfoNord.add(panInfoNordComboEtat);
 		panInfoNordComboEtat.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblEtat = new JLabel("Etat de l'exemplaire :");
 		panInfoNordComboEtat.add(lblEtat);
-		this.cboEtat = new JComboBox<String>(new String[] {"Très bon", "Bon", "Mauvais", "Perdu"});
+		this.cboEtat = new JComboBox<String>(new String[] { "Tres bon", "Bon", "Mauvais", "Perdu" });
 		panInfoNordComboEtat.add(cboEtat);
 
-		/////////////////////Zone Centre, commentaire/////////////////////
+		///////////////////// Zone Centre, commentaire/////////////////////
 		JPanel panInfoCentre = new JPanel();
-		panInfoCentre.setBorder(new TitledBorder(null, "Commentaire :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panInfoCentre
+		.setBorder(new TitledBorder(null, "Commentaire :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		add(panInfoCentre, BorderLayout.CENTER);
 		panInfoCentre.setLayout(new BoxLayout(panInfoCentre, BoxLayout.X_AXIS));
 
@@ -158,7 +159,7 @@ public class InformationLivre extends JPanel{
 		txtAreaComment.setWrapStyleWord(true);
 		panInfoCentre.add(txtAreaComment);
 
-		/////////////////////Zone Sud, bouton quitter/////////////////////
+		///////////////////// Zone Sud, bouton quitter/////////////////////
 		JPanel panInfoSud = new JPanel();
 		add(panInfoSud, BorderLayout.SOUTH);
 
@@ -167,24 +168,23 @@ public class InformationLivre extends JPanel{
 
 	}
 
-	/********************************************Méthodes*****************************************/
+	//*********************************************Methodes*****************************************//
 	public void setCommentaireEditable(boolean bool) {
 		this.txtAreaComment.setEditable(bool);
 		return;
 	}
 
-	/**Définie l'état, donc l'affichage du statut de la combo.
-	 * 0 - Très bon
-	 * 1 - Bon
-	 * 2 - Mauvais
-	 * 3 - Perdu
+	/**
+	 * Definie l'etat, donc l'affichage du statut de la combo. 0 - Tres bon 1 -
+	 * Bon 2 - Mauvais 3 - Perdu
 	 * 
 	 * @param i
 	 */
 	public void setComboEtat(int i) {
 		this.cboEtat.setSelectedIndex(i);
 	}
-	/************************************************Accesseurs***************************************/
+
+	//************************************************* Accesseurs***************************************//
 	public JTextField getTextFieldTitre() {
 		return textFieldTitre;
 	}
