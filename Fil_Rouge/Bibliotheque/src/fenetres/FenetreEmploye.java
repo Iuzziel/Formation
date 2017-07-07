@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 
 public class FenetreEmploye extends JFrame {
 
@@ -56,13 +57,13 @@ public class FenetreEmploye extends JFrame {
 		// Creation Panel du haut
 		JPanel panTabGestEmpruntHaut = new JPanel();
 		tabGestEmprunt.add(panTabGestEmpruntHaut);
-		panTabGestEmpruntHaut.setLayout(new BorderLayout(0, 0));
+		panTabGestEmpruntHaut.setLayout(new BoxLayout(panTabGestEmpruntHaut, BoxLayout.X_AXIS));
 		// Panel du haut Ajout du module recherche adherent
 		RechercherUnAdherent rechercherUnAdherent = new RechercherUnAdherent();
-		panTabGestEmpruntHaut.add(rechercherUnAdherent, BorderLayout.CENTER);
+		panTabGestEmpruntHaut.add(rechercherUnAdherent);
 		// Panel du haut Ajout du module Emprunt/Retour
 		EmpruntRetour empruntRetour = new EmpruntRetour();
-		panTabGestEmpruntHaut.add(empruntRetour, BorderLayout.EAST);
+		panTabGestEmpruntHaut.add(empruntRetour);
 
 		// Creation Panel du bas
 		// PanBas Ajout du module recherche livre

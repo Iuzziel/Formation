@@ -30,7 +30,7 @@ public class EmpruntRetour extends JPanel {
 	// Constructeur
 	public EmpruntRetour() {
 		setMinimumSize(new Dimension(200, 200));
-		setPreferredSize(new Dimension(250, 250));
+		setPreferredSize(new Dimension(375, 250));
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Selection Emprunt/Retour", TitledBorder.LEADING, TitledBorder.TOP));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
@@ -83,7 +83,7 @@ public class EmpruntRetour extends JPanel {
 					{"Titre 3", "Auteur 3", "Exemplaire 1", "Oui", "rue machin"},
 				},
 				new String[] {
-						"Titre", "Auteur", "N\\u00B0", "Disponible", "Bibliotheque"
+						"Titre", "Auteur", "N\u00B0", "Disponible", "Bibliotheque"
 				}
 				));
 		srlLivreRetourScanne = new JScrollPane(jTabLivreRetourScan);
