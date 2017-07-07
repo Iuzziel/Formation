@@ -2,14 +2,20 @@ package panneaux;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JToolBar.Separator;
 import javax.swing.border.TitledBorder;
+import fenetres.CreerUnEmploye;
+import fenetres.CreerUneBibliotheque;
+
 import javax.swing.JTextField;
 
 public class GestionEmployes extends JPanel {
@@ -20,6 +26,8 @@ public class GestionEmployes extends JPanel {
 	private JTextField txtFieldNom;
 	private JTextField txtFieldPrenom;
 	private JTextField txtFieldId;
+	private JButton btnCreerUnEmploye = new JButton("Creer un employe");
+	private JButton btnCreerUneBibliotheque = new JButton("Creer une bibliotheque");
 
 	public GestionEmployes() {
 		setMinimumSize(new Dimension(200, 400));
@@ -105,6 +113,44 @@ public class GestionEmployes extends JPanel {
 		panRechercheChampsId.add(txtFieldId);
 		txtFieldId.setColumns(10);
 
+		// panel de création
+		JPanel panRechercheCreer = new JPanel();
+		panRecherche.add(panRechercheCreer, BorderLayout.SOUTH);
+		panRechercheCreer.setLayout(new BoxLayout(panRechercheCreer, BoxLayout.Y_AXIS));
+		// panel de création / des employés
+		JPanel panRechercheCreerEmploye = new JPanel();
+		panRechercheCreerEmploye.add(btnCreerUnEmploye);		
+		panRechercheCreer.add(panRechercheCreerEmploye);
+
+		// panel de création / des bibliotheques
+		JPanel panRechercheCreerBibliotheque = new JPanel();
+		panRechercheCreerBibliotheque.add(btnCreerUneBibliotheque);
+		panRechercheCreer.add(panRechercheCreerBibliotheque);
+
+
+		// Abonnement aux listeners
+		btnCreerUnEmploye.addActionListener(new appActionListener());
+		btnCreerUneBibliotheque.addActionListener(new appActionListener());
+
+	}
+
+	// Listener
+	public class appActionListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == btnCreerUnEmploye) {
+				CreerUnEmploye fenetreCreerEmploye = new CreerUnEmploye();
+				fenetreCreerEmploye.setLocationRelativeTo(null);
+				fenetreCreerEmploye.setVisible(true);
+				fenetreCreerEmploye.setAlwaysOnTop(true);;
+			}
+			if(e.getSource() == btnCreerUneBibliotheque) {
+				CreerUneBibliotheque fenetreCreerBibliotheque = new CreerUneBibliotheque();
+				fenetreCreerBibliotheque.setLocationRelativeTo(null);
+				fenetreCreerBibliotheque.setVisible(true);
+				fenetreCreerBibliotheque.setAlwaysOnTop(true);;
+			}
+		}
 	}
 
 	// Accesseurs
