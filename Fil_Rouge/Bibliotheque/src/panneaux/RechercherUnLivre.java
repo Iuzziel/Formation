@@ -2,6 +2,7 @@ package panneaux;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -10,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 public class RechercherUnLivre extends JPanel {
@@ -26,6 +28,7 @@ public class RechercherUnLivre extends JPanel {
 	private JTextField textFieldTheme;
 	private JTextField textFieldExemplaire;
 	private JTable tabRenvoiResultatsLivre;
+	private JScrollPane srlTabRenvoiResultatsLivre;
 	private JPanel panRechercheBoutton = new JPanel();
 
 	// Constructeur
@@ -41,6 +44,18 @@ public class RechercherUnLivre extends JPanel {
 		JPanel panRecherche = new JPanel();
 		panRechercheResultats.add(panRecherche);
 		panRecherche.setLayout(new BoxLayout(panRecherche, BoxLayout.Y_AXIS));
+
+		// Numero exemplaire
+		JPanel panRechercheExemplaire = new JPanel();
+		panRechercheExemplaire.setBorder(new EmptyBorder(2, 2, 2, 2));
+		panRechercheExemplaire.setMaximumSize(new Dimension(600, 35));
+		panRecherche.add(panRechercheExemplaire);
+		panRechercheExemplaire.setLayout(new BoxLayout(panRechercheExemplaire, BoxLayout.X_AXIS));
+		JLabel lblExemplaire = new JLabel("Code exemplaire : ");
+		panRechercheExemplaire.add(lblExemplaire);
+		textFieldExemplaire = new JTextField();
+		panRechercheExemplaire.add(textFieldExemplaire);
+		textFieldExemplaire.setColumns(10);
 
 		// panRecherche range par label associe
 		// Titre
@@ -79,18 +94,6 @@ public class RechercherUnLivre extends JPanel {
 		panRechercheTheme.add(textFieldTheme);
 		textFieldTheme.setColumns(10);
 
-		// Numero exemplaire
-		JPanel panRechercheExemplaire = new JPanel();
-		panRechercheExemplaire.setBorder(new EmptyBorder(2, 2, 2, 2));
-		panRechercheExemplaire.setMaximumSize(new Dimension(600, 35));
-		panRecherche.add(panRechercheExemplaire);
-		panRechercheExemplaire.setLayout(new BoxLayout(panRechercheExemplaire, BoxLayout.X_AXIS));
-		JLabel lblExemplaire = new JLabel("Code exemplaire : ");
-		panRechercheExemplaire.add(lblExemplaire);
-		textFieldExemplaire = new JTextField();
-		panRechercheExemplaire.add(textFieldExemplaire);
-		textFieldExemplaire.setColumns(10);
-
 		// Bouton Rechercher
 		panRechercheBoutton.setBorder(new EmptyBorder(2, 0, 2, 0));
 		panRecherche.add(panRechercheBoutton);
@@ -108,10 +111,18 @@ public class RechercherUnLivre extends JPanel {
 
 		// TODO Remplir la JTable avec 2 vectors
 		tabRenvoiResultatsLivre = new JTable();
-		tabRenvoiResultatsLivre.setPreferredSize(new Dimension(250, 150));
-		panResultats.add(tabRenvoiResultatsLivre, BorderLayout.CENTER);
-
-		JScrollPane srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
+		tabRenvoiResultatsLivre.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Titre 1", "Auteur 1", "Exemplaire 1", "Oui", "rue machin"},
+				{"Titre 2", "Auteur 2", "Exemplaire 1", "Non", "rue machin"},
+				{"Titre 2", "Auteur 2", "Exemplaire 2", "Oui", "rue chose"},
+			},
+			new String[] {
+				"Titre", "Auteur", "N\u00B0Exemplaire", "Disponible", "Bibliotheque"
+			}
+		));
+		srlTabRenvoiResultatsLivre = new JScrollPane(tabRenvoiResultatsLivre);
+		srlTabRenvoiResultatsLivre.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panResultats.add(srlTabRenvoiResultatsLivre, BorderLayout.CENTER);
 
 		// Bouton +d'info et son panel

@@ -31,7 +31,10 @@ public class InformationLivre extends JPanel {
 	private JTextField textFieldNbExemplaireDispoBiblio;
 	private JTextField textFieldExemplaire;
 	private JTextArea txtAreaComment;
-	private JComboBox<String> cboEtat = new JComboBox<String>(new String[] {"Tres bon", "Bon", "Mauvais", "Perdu"});
+	private JComboBox<String> cboEtat = new JComboBox<String>();
+	private JPanel panInfoNord = new JPanel();
+	private JPanel panInfoNordExemplaire = new JPanel();
+	private JPanel panInfoNordComboEtat = new JPanel();
 
 	// Constructeur
 	public InformationLivre() {
@@ -39,7 +42,6 @@ public class InformationLivre extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 
 		///////////////////// Regroupement des Infos + TextField/////////////////////
-		JPanel panInfoNord = new JPanel();
 		panInfoNord.setBorder(new EmptyBorder(0, 2, 5, 2));
 		add(panInfoNord, BorderLayout.NORTH);
 		panInfoNord.setLayout(new GridLayout(0, 2, 5, 5));
@@ -126,7 +128,6 @@ public class InformationLivre extends JPanel {
 		textFieldISSN.setColumns(10);
 
 		// Code exemplaire
-		JPanel panInfoNordExemplaire = new JPanel();
 		panInfoNord.add(panInfoNordExemplaire);
 		panInfoNordExemplaire.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblExemplaire = new JLabel("Exemplaire :");
@@ -136,11 +137,16 @@ public class InformationLivre extends JPanel {
 		textFieldExemplaire.setColumns(10);
 
 		// Combo etat du livre
-		JPanel panInfoNordComboEtat = new JPanel();
 		panInfoNord.add(panInfoNordComboEtat);
 		panInfoNordComboEtat.setLayout(new GridLayout(0, 2, 0, 0));
 		JLabel lblEtat = new JLabel("Etat de l'exemplaire :");
 		panInfoNordComboEtat.add(lblEtat);
+		//TODO Changer ca dans la version finale
+		cboEtat.addItem("Excellent");
+		cboEtat.addItem("Tres bon");
+		cboEtat.addItem("Bon");
+		cboEtat.addItem("Mauvais");
+		cboEtat.addItem("Perdu");
 		panInfoNordComboEtat.add(cboEtat);
 
 		///////////////////// Zone Centre, commentaire/////////////////////
@@ -173,9 +179,21 @@ public class InformationLivre extends JPanel {
 		return;
 	}
 
+	public void setInformationLivreClient(boolean bool) {
+		if(bool) {
+			this.panInfoNord.remove(panInfoNordExemplaire);
+			this.panInfoNord.remove(panInfoNordComboEtat);
+		}
+		return;
+	}
+
 	/**
-	 * Definie l'etat, donc l'affichage du statut de la combo. 0 - Tres bon 1 -
-	 * Bon 2 - Mauvais 3 - Perdu
+	 * Definie l'etat, donc l'affichage du statut de la combo.
+	 * 0 - Excellent 
+	 * 1 - Tres bon 
+	 * 2 - Bon 
+	 * 3 - Mauvais 
+	 * 4 - Perdu
 	 * 
 	 * @param i
 	 */

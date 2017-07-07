@@ -1,7 +1,6 @@
 package panneaux;
 
 import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -13,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
 
@@ -24,12 +22,15 @@ public class EmpruntRetour extends JPanel {
 	private static final long serialVersionUID = -2734805873664823251L;
 
 	// Donnees membres
-	private JTable jTabLivreScan;
-	private JScrollPane srlLivreScanne = new JScrollPane(jTabLivreScan);
+	private JTable jTabLivreEmpruntScan;
+	private JScrollPane srlLivreEmpruntScanne;
+	private JTable jTabLivreRetourScan;
+	private JScrollPane srlLivreRetourScanne;
 
 	// Constructeur
 	public EmpruntRetour() {
 		setMinimumSize(new Dimension(200, 200));
+		setPreferredSize(new Dimension(250, 250));
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Selection Emprunt/Retour", TitledBorder.LEADING, TitledBorder.TOP));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
@@ -42,23 +43,24 @@ public class EmpruntRetour extends JPanel {
 		tabEmpruntRetour.addTab("Emprunt", panEmprunt);
 		panEmprunt.setLayout(new BoxLayout(panEmprunt, BoxLayout.Y_AXIS));
 		panEmprunt.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
 		// tabEmpruntRetour/panEmprunt/*
-		JLabel lblEmpruntTitre = new JLabel("Emprunt");
+		JLabel lblEmpruntTitre = new JLabel("Livre selectionne(s) : ");
 		panEmprunt.add(lblEmpruntTitre);
-		jTabLivreScan = new JTable();
-		jTabLivreScan.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Titre 1", "Auteur 1", "Exemplaire 1", "Oui"},
-				{"Titre 2", "Auteur 2", "Exemplaire 1", "Non"},
-				{"Titre 3", "Auteur 3", "Exemplaire 1", "Oui"},
-			},
-			new String[] {
-				"Titre", "Auteur", "Exemplaire", "Disponible"
-			}
-		));
-		srlLivreScanne.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		srlLivreScanne.add(jTabLivreScan);
-		panEmprunt.add(srlLivreScanne);
+		jTabLivreEmpruntScan = new JTable();
+		jTabLivreEmpruntScan.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"Titre 1", "Auteur 1", "Exemplaire 1", "Oui", "rue machin"},
+					{"Titre 2", "Auteur 2", "Exemplaire 1", "Non", "rue machin"},
+					{"Titre 3", "Auteur 3", "Exemplaire 1", "Oui", "rue truc"},
+				},
+				new String[] {
+						"Titre", "Auteur", "N\u00B0", "Disponible", "Bibliotheque"
+				}
+				));
+		srlLivreEmpruntScanne = new JScrollPane(jTabLivreEmpruntScan);
+		srlLivreEmpruntScanne.setViewportBorder(new BevelBorder(BevelBorder.LOWERED));
+		panEmprunt.add(srlLivreEmpruntScanne);
 		JProgressBar pgsBarEmprunt = new JProgressBar();
 		panEmprunt.add(pgsBarEmprunt);
 		JButton btnEmpruntEnregistrerFinal = new JButton("Valider Emprunt");
@@ -67,11 +69,26 @@ public class EmpruntRetour extends JPanel {
 		// tabEmpruntRetour/panRetour
 		JPanel panRetour = new JPanel();
 		tabEmpruntRetour.addTab("Retour", panRetour);
-		panRetour.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panRetour.setLayout(new BoxLayout(panRetour, BoxLayout.Y_AXIS));
+		panRetour.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
 		// tabEmpruntRetour/panRetour/*
-		JLabel lblRetour = new JLabel("Retour");
-		panRetour.add(lblRetour);
+		JLabel lblRetourTitre = new JLabel("Livre selectionne(s) : ");
+		panRetour.add(lblRetourTitre);
+		jTabLivreRetourScan = new JTable();
+		jTabLivreRetourScan.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"Titre 1", "Auteur 1", "Exemplaire 1", "Oui", "rue machin"},
+					{"Titre 2", "Auteur 2", "Exemplaire 1", "Non", "rue machin"},
+					{"Titre 3", "Auteur 3", "Exemplaire 1", "Oui", "rue machin"},
+				},
+				new String[] {
+						"Titre", "Auteur", "N\\u00B0", "Disponible", "Bibliotheque"
+				}
+				));
+		srlLivreRetourScanne = new JScrollPane(jTabLivreRetourScan);
+		srlLivreRetourScanne.setViewportBorder(new BevelBorder(BevelBorder.LOWERED));
+		panRetour.add(srlLivreRetourScanne);
 		JProgressBar pgsBarRetour = new JProgressBar();
 		panRetour.add(pgsBarRetour);
 		JButton btnValiderRetour = new JButton("Valider Retour");

@@ -20,7 +20,7 @@ public class FenetreEmploye extends JFrame {
 		this.setTitle("Bienvenu dans le logiciel de la bibliotheque");
 		this.setMinimumSize(new Dimension(800, 600));
 		this.setSize(1024, 768);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
 		this.getContentPane().setLayout(new BorderLayout(5, 5));
@@ -57,12 +57,15 @@ public class FenetreEmploye extends JFrame {
 		JPanel panTabGestEmpruntHaut = new JPanel();
 		tabGestEmprunt.add(panTabGestEmpruntHaut);
 		panTabGestEmpruntHaut.setLayout(new BorderLayout(0, 0));
-		// PanBas Ajout du module recherche adherent
+		// Panel du haut Ajout du module recherche adherent
 		RechercherUnAdherent rechercherUnAdherent = new RechercherUnAdherent();
 		panTabGestEmpruntHaut.add(rechercherUnAdherent, BorderLayout.CENTER);
+		// Panel du haut Ajout du module Emprunt/Retour
+		EmpruntRetour empruntRetour = new EmpruntRetour();
+		panTabGestEmpruntHaut.add(empruntRetour, BorderLayout.EAST);
 
 		// Creation Panel du bas
-		// PanBas Ajout du module recherche
+		// PanBas Ajout du module recherche livre
 		JPanel panTabGestEmpruntBas = new JPanel();
 		tabGestEmprunt.add(panTabGestEmpruntBas);
 		panTabGestEmpruntBas.setLayout(new BorderLayout(0, 0));
@@ -74,9 +77,6 @@ public class FenetreEmploye extends JFrame {
 		gestEmpruntInformationLivre.setMinimumSize(new Dimension(300, 300));
 		panTabGestEmpruntBas.add(gestEmpruntInformationLivre, BorderLayout.CENTER);
 		gestEmpruntInformationLivre.setCommentaireEditable(true);
-		// PanBas Ajout du module Emprunt/Retour
-		EmpruntRetour empruntRetour = new EmpruntRetour();
-		panTabGestEmpruntBas.add(empruntRetour, BorderLayout.EAST);
 
 		// **********************************Tab gestion du fond***********************************//
 		// Creation Panel

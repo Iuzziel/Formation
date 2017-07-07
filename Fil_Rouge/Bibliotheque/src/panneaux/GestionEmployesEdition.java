@@ -23,6 +23,7 @@ public class GestionEmployesEdition extends JPanel {
 	private JTextField txtFieldTelephone;
 	private JTextField txtFieldService;
 	private JTextField txtFieldRole;
+	private JTextField txtFieldBibliotheque;
 
 	// Constructeur
 	public GestionEmployesEdition() {
@@ -94,12 +95,23 @@ public class GestionEmployesEdition extends JPanel {
 		JPanel panInfoRole = new JPanel();
 		panInfo.add(panInfoRole);
 		panInfoRole.setLayout(new BoxLayout(panInfoRole, BoxLayout.X_AXIS));
-		JLabel lblRoleOccupe = new JLabel("Rôle occupe : ");
+		JLabel lblRoleOccupe = new JLabel("Role occupe : ");
 		panInfoRole.add(lblRoleOccupe);
 		txtFieldRole = new JTextField();
 		txtFieldRole.setMaximumSize(new Dimension(2147483647, 20));
 		panInfoRole.add(txtFieldRole);
 		txtFieldRole.setColumns(10);
+
+		// Creation d'un panel pour la bibliotheque auquel il est attribue
+		JPanel panInfobibliotheque = new JPanel();
+		panInfo.add(panInfobibliotheque);
+		panInfobibliotheque.setLayout(new BoxLayout(panInfobibliotheque, BoxLayout.X_AXIS));
+		JLabel lblRoleBibliotheque = new JLabel("Bibliotheque attribue : ");
+		panInfobibliotheque.add(lblRoleBibliotheque);
+		txtFieldBibliotheque = new JTextField();
+		txtFieldBibliotheque.setMaximumSize(new Dimension(2147483647, 20));
+		panInfobibliotheque.add(txtFieldBibliotheque);
+		txtFieldBibliotheque.setColumns(10);
 
 		// Ajout des boutons
 		JPanel panBtn = new JPanel();

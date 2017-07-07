@@ -30,6 +30,8 @@ public class FenetreClient extends JFrame {
 		moduleRechercheLivre.setPreferredSize(new Dimension(250, 200));
 		moduleRechercheLivre.setMinimumSize(new Dimension(150, 200));
 		InformationLivre moduleInformationLivre = new InformationLivre();
+		moduleInformationLivre.setInformationLivreClient(true);
+		moduleInformationLivre.repaint();
 		Header moduleHeader = new Header("Espace visiteurs");
 
 		this.getContentPane().add(moduleHeader, BorderLayout.NORTH);

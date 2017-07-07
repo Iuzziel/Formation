@@ -35,7 +35,7 @@ public class GestionEmployes extends JPanel {
 
 		// Creations du panneau des conditions
 		// Creations des donnees du panneau/titre
-		JLabel lblTitre = new JLabel("Conditions pour apparaître sur la liste : ");
+		JLabel lblTitre = new JLabel("Conditions pour apparaitre sur la liste : ");
 		panGestionEmployes.add(lblTitre);
 
 		// Creations du panneau des conditions/Bouton Radio groupe Tous&Filtrer

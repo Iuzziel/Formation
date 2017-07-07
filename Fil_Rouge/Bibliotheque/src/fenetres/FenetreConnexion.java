@@ -31,6 +31,7 @@ public class FenetreConnexion extends JFrame {
 		setMinimumSize(new Dimension(275, 200));
 		setMaximumSize(new Dimension(400, 400));
 		getContentPane().setLayout(new BorderLayout(5, 5));
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		// Titre
 		JLabel lblConnexionAuxComptes = new JLabel("Connexion aux comptes Employ\u00E9s :");
