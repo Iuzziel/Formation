@@ -23,7 +23,7 @@ public class CreerUneBibliotheque extends JFrame {
 	public CreerUneBibliotheque () {
 		this.setMinimumSize(new Dimension(500, 300));
 		this.setSize(500, 400);
-		this.setTitle("Creation d'un nouvel adherent");
+		this.setTitle("Creation d'une nouvelle bibliotheque");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
@@ -31,7 +31,7 @@ public class CreerUneBibliotheque extends JFrame {
 
 		//***************************************Panel creation d'un adherent***********************************//
 		JPanel panCreerUneBibliotheque = new JPanel();
-		panCreerUneBibliotheque.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Creer un adh\u00E9rent",
+		panCreerUneBibliotheque.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Creer une bibliotheque",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		this.getContentPane().add(panCreerUneBibliotheque);
 		panCreerUneBibliotheque.setLayout(new BorderLayout(5, 5));
