@@ -65,10 +65,19 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
+		try {
+			int update = stm.executeUpdate("Insert into FOURNIS (NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) "
+					+ "values ('TEST3','TRIGSEQ','50505','Testcity','P.Plop','6')");
+			System.out.println(update + " nombre de ligne(s) insérée(s)");
+		} catch (SQLException e) {
+			System.err.println("Erreur d'insert par seq");
+			e.printStackTrace();
+		}
+
 		//Affichage des resultats de la table FOURNIS
 		ResultSet resultat;
 		try {
-			resultat = stm.executeQuery("SELECT * FROM FOURNIS WHERE NUMFOU > 2000");
+			resultat = stm.executeQuery("SELECT * FROM FOURNIS WHERE NUMFOU >= 1");
 			while (resultat.next()) {
 				int NUMFOU = resultat.getInt("NUMFOU");
 				String NOMFOU = resultat.getString("NOMFOU");
@@ -85,16 +94,27 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
+		
 		try {
-			int update = stm.executeUpdate("DELETE FROM FOURNIS WHERE FOURNIS.NUMFOU = 1001001");
+			int update = stm.executeUpdate("DELETE FROM FOURNIS WHERE FOURNIS.NUMFOU < 100");
 			System.out.println(update + " nombre de ligne(s) suprimée(s)");
 		} catch (Exception e){
 			System.err.println("Erreur de Delete");
 			e.printStackTrace();
 		}
 		
+		try {
+			int update = stm.executeUpdate("DROP SEQUENCE SEQ_NUMFOU");
+			System.out.println(update + " séquence(s) suprimée(s)");
+			update = stm.executeUpdate("CREATE SEQUENCE SEQ_NUMFOU INCREMENT BY 1 MAXVALUE 10000 MINVALUE 1 NOCACHE");
+			System.out.println(update + " séquence(s) crée(s)");
+		} catch (Exception e){
+			System.err.println("Erreur de Delete de séquence");
+			e.printStackTrace();
+		}
 		//Fermeture
 		try {
+			pstm.close();
 			stm.close();
 			cnx.close();
 		} catch (SQLException e) {
