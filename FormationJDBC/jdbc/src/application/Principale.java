@@ -5,8 +5,8 @@ import java.sql.*;
 public class Principale {
 
 	public static void main (String[] args){
+		
 		Connection cnx = null;
-
 		try {
 			//Chargement de la classe du pilote
 			String driver = "oracle.jdbc.driver.OracleDriver";
@@ -34,21 +34,50 @@ public class Principale {
 			e.printStackTrace();
 		}
 
-		ResultSet resultat;
-
+		//Insertion de données
 		try {
-			resultat = stm.executeQuery("SELECT * FROM FOURNIS");
+			int update = stm.executeUpdate("INSERT INTO FOURNIS (NUMFOU, NOMFOU, RUEFOU, POSFOU, VILFOU, CONFOU, SATISF) "
+					+ "VALUES (1001001, 'Test jdbc', 'Rue du connecteur', 14000, 'Caen', 'M Oracle', 9)");
+			System.out.println(update + " nombre de ligne(s) insérée(s)");
+		} catch (Exception e){
+			System.err.println("Erreur d'insertion");
+			e.printStackTrace();
+		}
+
+		//Creation de la preparedStatement
+		PreparedStatement pstm = null;
+		try {
+			pstm = cnx.prepareStatement("UPDATE FOURNIS SET POSFOU = 12345, VILFOU = 'PrepStatement' WHERE NUMFOU = ?");
+		} catch (Exception e) {
+			System.err.println("Erreur dans la PreparedStatement");
+		}
+		//Setting de la pstm
+		try {
+			pstm.setInt(1, 1001001);
+		} catch (SQLException e) {
+			System.err.println("Erreur dans le setting de pstm");
+			e.printStackTrace();
+		}
+		try {
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println("Erreur dans l'execution de pstm");
+			e.printStackTrace();
+		}
+		
+		//Affichage des resultats de la table FOURNIS
+		ResultSet resultat;
+		try {
+			resultat = stm.executeQuery("SELECT * FROM FOURNIS WHERE NUMFOU > 2000");
 			while (resultat.next()) {
 				int NUMFOU = resultat.getInt("NUMFOU");
 				String NOMFOU = resultat.getString("NOMFOU");
 				String RUEFOU = resultat.getString("RUEFOU");
 				String POSFOU = resultat.getString("POSFOU");
 				String VILFOU = resultat.getString("VILFOU");
-				String CONFOU = resultat.getString("CONFOU");
 				int SATISF = resultat.getInt("SATISF");
 				System.out.println(NUMFOU + " - " + NOMFOU 
 						+ " - Adresse : " + RUEFOU + " - " + POSFOU + " - " + VILFOU 
-						+ " - Contact : " + CONFOU 
 						+ " - Satisf : " + SATISF);
 			}
 		} catch (SQLException e) {
@@ -56,6 +85,15 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
+		try {
+			int update = stm.executeUpdate("DELETE FROM FOURNIS WHERE FOURNIS.NUMFOU = 1001001");
+			System.out.println(update + " nombre de ligne(s) suprimée(s)");
+		} catch (Exception e){
+			System.err.println("Erreur de Delete");
+			e.printStackTrace();
+		}
+		
+		//Fermeture
 		try {
 			stm.close();
 			cnx.close();
