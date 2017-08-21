@@ -112,6 +112,30 @@ public class Principale {
 			System.err.println("Erreur de Delete de séquence");
 			e.printStackTrace();
 		}
+		
+		/*
+
+		//Test de recuperation num sequence
+		String sql = "INSERT INTO FOURNIS (NOMFOU, RUEFOU) VALUES (?, ?) ";
+		// Créer une requête prédéfinie sur la connexion con
+		// Passer en 2em paramètre (tableau de String) la colonne dont
+		// on veut récupérer la valeur
+		PreparedStatement stm =
+				con.prepareStatement (sql, new String[] {“col1”} );
+		// donner la valeur des paramètres pour l'exécution de la requête
+		stm.setString (1,"Bonjour");
+		stm.setInt (2, 123);
+		// exécution de la requête et récupération du nbre d’enreg MAJ
+		Int enregMaj = stm.executeUpdate();
+		// Récupération de la valeur demandée
+		long id;
+		ResultSet generatedKeys = stm.getGeneratedKeys()) ;
+		if (generatedKeys. next())
+			id = generatedKeys.getLong(1) ; // N° de la colonne du tab de String
+		System.out.println(“id : ” + id);
+		
+		*/		
+		
 		//Fermeture
 		try {
 			pstm.close();
