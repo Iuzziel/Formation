@@ -1,6 +1,7 @@
 package application;
 
 import java.sql.*;
+import oracle.jdbc.*;
 
 public class Principale {
 
@@ -94,6 +95,60 @@ public class Principale {
 			e.printStackTrace();
 		}
 		
+		try {
+			//Test de recuperation num sequence
+			String sql = "INSERT INTO FOURNIS (NOMFOU, RUEFOU, POSFOU, VILFOU, CONFOU) VALUES (?, ?, ?, ?, ?) ";
+			// Créer une requête prédéfinie sur la connexion con
+			// Passer en 2em paramètre (tableau de String) la colonne dont
+			// on veut récupérer la valeur
+			PreparedStatement pstm2;
+			pstm2 = cnx.prepareStatement (sql, new String[] {"NUMFOU"});
+			// donner la valeur des paramètres pour l'exécution de la requête
+			pstm2.setString (1,"Bonjour");
+			pstm2.setInt (2, 123);
+			pstm2.setString(3, "12345");
+			pstm2.setString(4, "Villetest");
+			pstm2.setString(5, "M.Test");
+			// exécution de la requête et récupération du nbre d’enreg MAJ
+			int enregMaj = pstm2.executeUpdate();
+			// Récupération de la valeur demandée
+			long id = 0;
+			ResultSet generatedKeys = pstm2.getGeneratedKeys();
+			if (generatedKeys.next())
+				id = generatedKeys.getLong(1) ; // N° de la colonne du tab de String
+			System.out.println("Récupération id séquence : " + id + " - " + enregMaj);		
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		/* A faire dans Oracle
+		 * Injecter le fichier gavagepapyrus.sql
+		 * */
+		
+		CallableStatement cs;
+		try {
+			cs = cnx.prepareCall("begin ? := bonjour(?); end;");
+			cs.registerOutParameter(1, Types.VARCHAR);
+			cs.setString(2, "Philippe");
+			cs.execute();
+			String result = cs.getNString(1);
+			System.out.println("Fonction stockée : " + result);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
+			cs = cnx.prepareCall("{call LST_FOURNIS(?, ?)}");
+			cs.setString(1, "10");
+			cs.registerOutParameter(2, OracleTypes.CURSOR);
+			cs.execute();
+			ResultSet result = (ResultSet) cs.getObject(2);
+			while (result.next()) {
+				System.out.println("Procédure stockée : " + result.getString("NUMFOU") + " - " + result.getString("NOMFOU"));
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}		
 		
 		try {
 			int update = stm.executeUpdate("DELETE FROM FOURNIS WHERE FOURNIS.NUMFOU < 100");
@@ -112,29 +167,6 @@ public class Principale {
 			System.err.println("Erreur de Delete de séquence");
 			e.printStackTrace();
 		}
-		
-		/*
-
-		//Test de recuperation num sequence
-		String sql = "INSERT INTO FOURNIS (NOMFOU, RUEFOU) VALUES (?, ?) ";
-		// Créer une requête prédéfinie sur la connexion con
-		// Passer en 2em paramètre (tableau de String) la colonne dont
-		// on veut récupérer la valeur
-		PreparedStatement stm =
-				con.prepareStatement (sql, new String[] {“col1”} );
-		// donner la valeur des paramètres pour l'exécution de la requête
-		stm.setString (1,"Bonjour");
-		stm.setInt (2, 123);
-		// exécution de la requête et récupération du nbre d’enreg MAJ
-		Int enregMaj = stm.executeUpdate();
-		// Récupération de la valeur demandée
-		long id;
-		ResultSet generatedKeys = stm.getGeneratedKeys()) ;
-		if (generatedKeys. next())
-			id = generatedKeys.getLong(1) ; // N° de la colonne du tab de String
-		System.out.println(“id : ” + id);
-		
-		*/		
 		
 		//Fermeture
 		try {
