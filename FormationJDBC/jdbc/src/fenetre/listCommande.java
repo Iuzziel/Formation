@@ -16,10 +16,10 @@ public class listCommande extends JFrame{
 	 */
 	private static final long serialVersionUID = -4203726597788592163L;
 
-	final String INIT_LBLDATCOM = "jj/mm/aaaa";
+	final String init_lblDatcom = "jj/mm/aaaa";
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
 	private JTextField jtfNumcom = new JTextField();
-	private JLabel lblDatcom = new JLabel(INIT_LBLDATCOM);
+	private JLabel lblDatcom = new JLabel(init_lblDatcom);
 	private JLabel barreStatut = new JLabel();
 	private String [] cols = {"NUMCOM", "DATCOM", "NUMFOU", "OBSCOM"};
 	private DefaultTableModel listData = new DefaultTableModel(cols, 0);
@@ -37,8 +37,10 @@ public class listCommande extends JFrame{
 	}
 
 	private void initControles(){
-		JPanel zoneClient = (JPanel) this.getContentPane(); // BorderLayout par défaut
-		JPanel zoneEntcom = new JPanel(); // FlowLayout par défaut
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		JPanel zoneEntcom = new JPanel();
+		getContentPane().add(zoneEntcom, BorderLayout.CENTER);
+		zoneEntcom.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		zoneEntcom.add(new JLabel("N° Cde :"));
 		jtfNumcom.setColumns(10);
 		jtfNumcom.setToolTipText("Entrez un numéro de commande pour afficher la liste des commandes du même fournisseur");
@@ -47,6 +49,7 @@ public class listCommande extends JFrame{
 		zoneEntcom.add(jtfNumcom);
 		zoneEntcom.add(new JLabel("Du"));
 		zoneEntcom.add(lblDatcom);
+		jtEntcom.setEnabled(false);
 		jtEntcom.getColumnModel().getColumn(0).setMinWidth(65);
 		jtEntcom.getColumnModel().getColumn(0).setMaxWidth(65);
 		jtEntcom.getColumnModel().getColumn(0).setPreferredWidth(65);
@@ -58,10 +61,9 @@ public class listCommande extends JFrame{
 		jtEntcom.getColumnModel().getColumn(2).setPreferredWidth(80);
 		panEntcom.setPreferredSize(new Dimension(450,150));
 		zoneEntcom.add(panEntcom);
-		zoneClient.add(zoneEntcom); // au centre par défaut
+		getContentPane().add(barreStatut, BorderLayout.SOUTH);
 		barreStatut.setForeground(Color.RED);
 		barreStatut.setHorizontalAlignment(JLabel.CENTER);
-		zoneClient.add(barreStatut, BorderLayout.SOUTH);
 	}
 
 	class AppKeyListener implements KeyListener {
@@ -77,7 +79,7 @@ public class listCommande extends JFrame{
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-
+			// Auto-generated method stub
 		}
 	}
 
@@ -88,21 +90,24 @@ public class listCommande extends JFrame{
 	}
 	private void jtfNumcom_click(){
 		try {
+			listData.setRowCount(0);
+			lblDatcom.setText("jj/mm/aaaa");
 			EntCom tempEntCom = EntComManager.getEntCom(new EntCom(Integer.valueOf(jtfNumcom.getText())));
-			lblDatcom.setText(sdf.format(tempEntCom.datcom));
-			Vector<EntCom> tempVec = EntComManager.getEntComFournis(new Fournis(tempEntCom.numfou));
-			for (EntCom entCom : tempVec) {
-				listData.addRow(entCom.toVector());
+			if (tempEntCom != null) {
+				lblDatcom.setText(sdf.format(tempEntCom.datcom));
+				Vector<EntCom> tempVec = EntComManager.getEntComFournis(new Fournis(tempEntCom.numfou));
+				for (EntCom entCom : tempVec) {
+					listData.addRow(entCom.toVector());
+				}
+			} else {
+				barreStatut.setText("Pas de commande avec ce numéro");
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (NullPointerException e) {
-			barreStatut.setText("Pas de commande avec ce numéro");
-			e.printStackTrace();
 		} catch (NumberFormatException e) {
-			barreStatut.setText("Pas numéro entrée");
+			barreStatut.setText("Ce n'est pas un numéro valide");
 		}
 	}
 
